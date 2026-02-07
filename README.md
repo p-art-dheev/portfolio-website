@@ -253,7 +253,7 @@ Update the contact form to connect to your backend or use services like:
 
 ## 🎉 Enjoy!
 
-Customize this portfolio to make it uniquely yours. Happy coding! 🚀
+Customize this portfolio to make it uniquely yours. Happy coding!! 🚀
 
 ---
 
