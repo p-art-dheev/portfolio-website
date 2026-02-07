@@ -15,9 +15,7 @@ Desktop.ini
 
 # Dependencies
 node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Lockfiles should be committed!
 
 # Build outputs
 dist/
