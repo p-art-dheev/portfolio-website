@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── Theme CSS Variables ── */
+  :root {
+    /* Text colors */
+    --color-text-primary: #e8e8f0; /* headings, main text */
+    --color-text-secondary: #a8a8b8; /* subtitles, descriptions */
+    --color-text-muted: #6e6e7e; /* labels, hints */
+
+    /* Surface colors */
+    --color-surface: #13131a; /* badges, inputs, tags */
+    --color-surface-hover: #1a1a24; /* hover states */
+    --color-surface-elevated: rgba(255, 255, 255, 0.01); /* glass bg */
+
+    /* Border */
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-border-hover: rgba(255, 255, 255, 0.2);
+
+    /* Controls (play button, etc.) */
+    --color-control-bg: #ffffff;
+    --color-control-fg: #111827;
+    --color-control-hover: rgba(255, 255, 255, 0.1);
+
+    /* Contribution grid (GitHub-style dark) */
+    --color-contrib-0: #161b22;
+
+    /* Shadows */
+    --shadow-card-hover:
+      0 8px 32px rgba(0, 0, 0, 0.3), 0 0 8px rgba(0, 225, 135, 0.15);
+
+    /* Cursor glow blend */
+    --cursor-blend: screen;
+
+    /* Hide default cursor */
+    cursor: none;
+  }
+
+  body.light {
+    --color-text-primary: #1a1a2e;
+    --color-text-secondary: #4a4a5a;
+    --color-text-muted: #6e6e7e;
+
+    --color-surface: #e5e7eb;
+    --color-surface-hover: #d1d5db;
+    --color-surface-elevated: rgba(255, 255, 255, 0.6);
+
+    --color-border: rgba(0, 0, 0, 0.1);
+    --color-border-hover: rgba(0, 0, 0, 0.2);
+
+    --color-control-bg: #1a1a2e;
+    --color-control-fg: #ffffff;
+    --color-control-hover: rgba(0, 0, 0, 0.08);
+
+    --color-contrib-0: #d0d7de;
+
+    --shadow-card-hover:
+      0 8px 32px rgba(0, 0, 0, 0.1), 0 0 8px rgba(0, 225, 135, 0.1);
+
+    --cursor-blend: multiply;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-color: #0a0a0f;
+    color: var(--color-text-primary);
+    cursor: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+
+  body.light {
+    background-color: #f0f2f5;
+    color: var(--color-text-primary);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    @apply backdrop-blur-sm rounded-2xl shadow-2xl;
+    @apply transition-all duration-300 relative overflow-hidden;
+  }
+
+  .glass-card::before {
+    content: "";
+    @apply absolute top-0 -left-full w-full h-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
+    @apply transition-all duration-500;
+  }
+
+  .glass-card:hover::before {
+    @apply left-full;
+  }
+
+  .glass-card:hover {
+    @apply -translate-y-1;
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .glass-card-static:hover {
+    transform: none;
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 rounded-xl font-medium bg-primary-500;
+    @apply text-white transition-all duration-300 relative overflow-hidden;
+    @apply hover:-translate-y-0.5 hover:bg-primary-600;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 rounded-xl font-medium transition-all duration-300;
+    @apply hover:-translate-y-0.5;
+    background: var(--color-control-hover);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+  }
+
+  .btn-secondary:hover {
+    @apply border-primary-500;
+  }
+
+  .text-gradient {
+    @apply text-primary-500;
+  }
+
+  .grid-overlay {
+    @apply fixed inset-0 pointer-events-none opacity-50;
+    background-image:
+      linear-gradient(rgba(0, 225, 135, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 225, 135, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridPulse 8s ease-in-out infinite;
+  }
+
+  .light .grid-overlay {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  }
+
+  /* ── Theme utility classes ── */
+  .theme-text {
+    color: var(--color-text-primary);
+  }
+  .theme-text-sub {
+    color: var(--color-text-secondary);
+  }
+  .theme-text-muted {
+    color: var(--color-text-muted);
+  }
+  .theme-surface {
+    background-color: var(--color-surface);
+  }
+  .theme-surface-hover:hover {
+    background-color: var(--color-surface-hover);
+  }
+  .theme-border {
+    border-color: var(--color-border);
+  }
+  .theme-border-hover:hover {
+    border-color: var(--color-border-hover);
+  }
+  .theme-control-bg {
+    background-color: var(--color-control-bg);
+  }
+  .theme-control-fg {
+    color: var(--color-control-fg);
+  }
+  .theme-control-hover:hover {
+    background-color: var(--color-control-hover);
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  @apply rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-500;
+}
+
+/* Selection */
+::selection {
+  @apply bg-primary-500 text-white;
+}
+
+/* Grid Pulse Animation */
+@keyframes gridPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
