@@ -83,12 +83,12 @@ const Hero = () => {
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex gap-3 justify-center md:justify-start">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.open('/assets/resume/Pardheev_s_Resume.pdf', '_blank')}
-                className="flex items-center gap-2 px-4 py-2.5 bg-primary-500/20 border border-primary-500/30 rounded-xl theme-text font-display font-semibold text-sm transition-all"
+                className="flex items-center gap-2 px-4 py-3 bg-primary-500/20 border border-primary-500/30 rounded-xl theme-text font-display font-semibold text-sm transition-all min-w-[120px] justify-center"
               >
                 <FaFileAlt />
                 <span>Read Resume</span>
@@ -103,7 +103,7 @@ const Hero = () => {
                     window.scrollTo({ top: element.offsetTop - 100, behavior: 'smooth' })
                   }
                 }}
-                className="btn-secondary flex items-center gap-2 text-sm font-display font-semibold"
+                className="flex items-center gap-2 px-4 py-3 btn-secondary text-sm font-display font-semibold min-w-[120px] justify-center"
               >
                 <FaEnvelope />
                 <span>Contact</span>
@@ -113,7 +113,7 @@ const Hero = () => {
 
           {/* Profile Picture */}
           <motion.div
-            className="flex w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-2xl items-center justify-center relative flex-shrink-0 md:flex-shrink-0 mx-auto md:mx-0 mb-6 md:mb-0"
+            className="hidden md:flex w-40 h-40 lg:w-48 lg:h-48 rounded-2xl items-center justify-center relative flex-shrink-0"
           >
             {/* Pulsing outer ring */}
             <motion.div
