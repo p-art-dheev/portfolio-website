@@ -26,11 +26,13 @@ jobs:
         run: npm run build
 
       - name: 📂 Sync files (FTP)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/ 
-          server-dir: ./ # FTP account is already rooted to public_html
-          dry-run: false
+          local-dir: ./dist/
+          server-dir: ./
+          protocol: ftps
+          port: 21
+          timeout: 60000
