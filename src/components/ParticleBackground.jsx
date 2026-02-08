@@ -44,7 +44,6 @@ const ParticleBackground = () => {
     }
 
     const init = () => {
-      // ... (existing init logic is fine to stay, but I am replacing the block)
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle())
       }

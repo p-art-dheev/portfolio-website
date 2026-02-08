@@ -14,23 +14,20 @@ const ICON_MAP = {
   SiCplusplus, SiTailwindcss, VscVscode,
 }
 
+const TechItem = ({ tech }) => {
+  const Icon = ICON_MAP[tech.icon]
+  return (
+    <div className="flex-shrink-0 flex flex-col items-center gap-2 p-4 rounded-2xl border theme-border min-w-[100px]">
+      {Icon && <Icon className={`text-2xl ${tech.color}`} />}
+      <span className="text-xs font-medium">{tech.name}</span>
+    </div>
+  )
+}
+
 const TechStack = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   const items = [...config.techStack, ...config.techStack]
-
-  const TechItem = ({ tech, i }) => {
-    const Icon = ICON_MAP[tech.icon]
-    return (
-      <div
-        key={i}
-        className="flex-shrink-0 flex flex-col items-center gap-2 p-4 rounded-2xl border theme-border min-w-[100px]"
-      >
-        {Icon && <Icon className={`text-2xl ${tech.color}`} />}
-        <span className="text-xs font-medium">{tech.name}</span>
-      </div>
-    )
-  }
 
   return (
     <section>
@@ -48,7 +45,7 @@ const TechStack = () => {
           <div className="relative overflow-hidden mask-gradient group">
             <div className="flex gap-4 animate-scroll group-hover:[animation-play-state:paused] py-1" style={{ width: 'fit-content' }}>
               {items.map((tech, i) => (
-                <TechItem tech={tech} i={`r1-${i}`} key={`r1-${i}`} />
+                <TechItem tech={tech} key={`r1-${i}`} />
               ))}
             </div>
           </div>

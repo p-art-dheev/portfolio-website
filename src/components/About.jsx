@@ -7,10 +7,10 @@ import { config } from '../config'
 /** GitHub-style contribution colors — adapts via CSS variable for level 0 */
 const CONTRIBUTION_LEVELS = [
   'bg-[--color-contrib-0]',
-  'bg-primary-900',
-  'bg-primary-700',
-  'bg-primary-500',
-  'bg-primary-300',
+  'bg-[#0e4429]',
+  'bg-[#006d32]',
+  'bg-[#26a641]',
+  'bg-[#39d353]',
 ]
 
 const getLevel = (count) =>
@@ -32,10 +32,10 @@ const calculateStreaks = (contributions) => {
   return { total, current, longest }
 }
 
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
 
 const ordinal = (n) => {
-  const s = ['th', 'st', 'nd', 'rd']
+  const s = ['th','st','nd','rd']
   const v = n % 100
   return n + (s[(v - 20) % 10] || s[v] || s[0])
 }
@@ -74,7 +74,9 @@ const About = () => {
         if (cancelled || !data.contributions) return
 
         const mapped = data.contributions.map((c) => ({
-          date: c.date, count: c.count, level: getLevel(c.count),
+          date: c.date,
+          count: c.count,
+          level: getLevel(c.count),
         }))
         setContributions(mapped)
         setStats(calculateStreaks(data.contributions))
@@ -105,7 +107,7 @@ const About = () => {
         {/* About Card */}
         <div className="glass-card p-6 md:p-8">
           <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-4 text-center" style={{ letterSpacing: '-0.02em' }}>About Me</h2>
-          <div className="space-y-3 text-sm md:text-base theme-text-sub leading-relaxed font-grotesk">
+          <div className="space-y-3 text-sm md:text-base theme-text-sub leading-relaxed font-sans">
             {config.personal.bio.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}
@@ -143,7 +145,7 @@ const About = () => {
                   setSelectedYear(val === 'last' ? 'last' : Number(val))
                 }}
                 className="px-3 py-1.5 theme-surface border theme-border rounded-lg text-sm text-primary-500 font-mono cursor-pointer theme-surface-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500/50 appearance-none bg-no-repeat bg-[length:16px] bg-[right_8px_center] pr-8"
-                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2300e187'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'/%3E%3C/svg%3E")` }}
+                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2310b981'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'/%3E%3C/svg%3E")` }}
               >
                 <option value="last">Last 365 days</option>
                 {years.map((year) => (

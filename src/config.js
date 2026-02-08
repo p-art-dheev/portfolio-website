@@ -26,7 +26,6 @@ export const config = {
     gpa: '8.24',
   },
 
-  // ---- Music Player ----
   // ---- Music Playlist ----
   music: [
     {
@@ -133,7 +132,7 @@ export const config = {
 
   // ---- Theme ----
   theme: {
-    primary: '#00e187',
-    secondary: '#22c55e',
+    primary: '#059669',    // Darker Emerald (better for light mode)
+    secondary: '#0d9488',  // Darker Teal
   },
 }

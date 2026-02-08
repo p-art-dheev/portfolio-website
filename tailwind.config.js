@@ -9,16 +9,16 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#effef7',
-          100: '#dafeea',
-          200: '#b8fadd',
-          300: '#81f4c3',
-          400: '#43e5a0',
-          500: '#00e187',
-          600: '#00b26a',
-          700: '#008c52',
-          800: '#00693d',
-          900: '#00492a',
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          200: '#a7f3d0',
+          300: '#6ee7b7',
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+          700: '#047857',
+          800: '#065f46',
+          900: '#064e3b',
         },
         secondary: {
           50: '#f0fdf4',
@@ -50,7 +50,6 @@ export default {
         mono: ['Space Grotesk', 'sans-serif'],
         display: ['Space Grotesk', 'sans-serif'],
         heading: ['Space Grotesk', 'sans-serif'],
-        grotesk: ['Space Grotesk', 'sans-serif'],
       },
       animation: {
         'gradient': 'gradient 3s ease infinite',

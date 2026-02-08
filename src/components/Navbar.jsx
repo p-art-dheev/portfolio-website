@@ -1,27 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaMoon, FaBars, FaTimes } from 'react-icons/fa'
 import { IoSunny } from 'react-icons/io5'
 import { config } from '../config'
+
+const NAV_LINKS = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About Me' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'socials', label: 'Socials' },
+]
 
 const Navbar = ({ darkMode, toggleTheme }) => {
   const [activeSection, setActiveSection] = useState('home')
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Me' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'socials', label: 'Socials' },
-  ]
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
 
       const scrollPosition = window.scrollY + 150
-      navLinks.forEach(({ id }) => {
+      NAV_LINKS.forEach(({ id }) => {
         const section = document.getElementById(id)
         if (section) {
           const { offsetTop, offsetHeight } = section
@@ -36,13 +36,13 @@ const Navbar = ({ darkMode, toggleTheme }) => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (id) => {
+  const scrollToSection = useCallback((id) => {
     const element = document.getElementById(id)
     if (element) {
       window.scrollTo({ top: element.offsetTop - 100, behavior: 'smooth' })
       setIsMobileMenuOpen(false)
     }
-  }
+  }, [])
 
   return (
     <motion.nav
@@ -63,7 +63,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
@@ -129,7 +129,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
             className="md:hidden mt-4 pt-4 border-t theme-border"
           >
             <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}

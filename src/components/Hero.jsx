@@ -59,7 +59,7 @@ const Hero = () => {
                   className="text-xl md:text-2xl font-normal opacity-60 theme-text"
                   style={{ fontFamily: "'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Tamil', 'Noto Sans Arabic', 'Space Grotesk', sans-serif" }}
                 >
-                  {GREETINGS[greetIndex]}
+                  {GREETINGS[greetIndex]} 
                 </motion.span>
               </AnimatePresence>
             </div>
@@ -67,7 +67,7 @@ const Hero = () => {
             {/* I'm + Name */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold leading-tight mb-4" style={{ letterSpacing: '-0.02em' }}>
               <span className="theme-text">I'm </span>
-              <span className="text-primary-500">{config.personal.name}</span>
+              <span className="theme-text">{config.personal.name}</span>
             </h1>
 
             {/* Tagline pill */}
@@ -87,7 +87,7 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2.5 bg-primary-500/20 border border-primary-500/30 rounded-xl text-primary-500 font-display font-semibold text-sm transition-all"
+                className="flex items-center gap-2 px-4 py-2.5 bg-primary-500/20 border border-primary-500/30 rounded-xl theme-text font-display font-semibold text-sm transition-all"
               >
                 <FaFileAlt />
                 <span>Read Resume</span>
@@ -105,40 +105,37 @@ const Hero = () => {
           </div>
 
           {/* Profile Picture */}
-          {/* Profile Picture */}
           <motion.div
-            className="hidden md:flex w-56 h-56 lg:w-64 lg:h-64 rounded-3xl bg-white/5 border border-white/10 p-2 items-center justify-center relative flex-shrink-0 shadow-2xl"
+            className="hidden md:flex w-40 h-40 lg:w-48 lg:h-48 rounded-2xl bg-primary-500 items-center justify-center relative overflow-hidden flex-shrink-0 shadow-2xl"
           >
-            <div className="w-full h-full rounded-2xl overflow-hidden relative">
-              {config.personal.profileImage ? (
-                <img
-                  src={config.personal.profileImage}
-                  alt={config.personal.name}
-                  className="w-full h-full object-cover z-10"
-                />
-              ) : (
-                <div className="w-full h-full bg-primary-500 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-                  <FaUser className="text-6xl lg:text-7xl text-white/90 z-10" />
-                </div>
-              )}
-            </div>
+            {config.personal.profileImage ? (
+              <img
+                src={config.personal.profileImage}
+                alt={config.personal.name}
+                className="w-full h-full object-cover z-10"
+              />
+            ) : (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+                <FaUser className="text-5xl lg:text-6xl text-white/90 z-10" />
+              </>
+            )}
 
             {/* Animated border glow */}
             <motion.div
-              className="absolute inset-0 rounded-3xl"
+              className="absolute inset-0 rounded-2xl"
               style={{
-                border: '1px solid rgba(0, 225, 135, 0.3)',
-                boxShadow: '0 0 15px rgba(0, 225, 135, 0.05)',
+                border: '2px solid rgba(16, 185, 129, 0.5)',
+                boxShadow: '0 0 30px rgba(16, 185, 129, 0.3)',
               }}
               animate={{
                 boxShadow: [
-                  '0 0 15px rgba(0, 225, 135, 0.05)',
-                  '0 0 25px rgba(0, 225, 135, 0.15)',
-                  '0 0 15px rgba(0, 225, 135, 0.05)',
+                  '0 0 30px rgba(16, 185, 129, 0.3)',
+                  '0 0 50px rgba(16, 185, 129, 0.5)',
+                  '0 0 30px rgba(16, 185, 129, 0.3)',
                 ],
               }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             />
           </motion.div>
         </motion.div>

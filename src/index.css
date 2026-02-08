@@ -39,25 +39,25 @@
   }
 
   body.light {
-    --color-text-primary: #1a1a2e;
-    --color-text-secondary: #4a4a5a;
-    --color-text-muted: #6e6e7e;
+    --color-text-primary: #000000;
+    --color-text-secondary: #525252;
+    --color-text-muted: #737373;
 
-    --color-surface: #e5e7eb;
-    --color-surface-hover: #d1d5db;
-    --color-surface-elevated: rgba(255, 255, 255, 0.6);
+    --color-surface: #fafafa;
+    --color-surface-hover: #f5f5f5;
+    --color-surface-elevated: rgba(255, 255, 255, 0.95);
 
-    --color-border: rgba(0, 0, 0, 0.1);
-    --color-border-hover: rgba(0, 0, 0, 0.2);
+    --color-border: rgba(0, 0, 0, 0.12);
+    --color-border-hover: rgba(5, 150, 105, 0.5);
 
-    --color-control-bg: #1a1a2e;
+    --color-control-bg: #000000;
     --color-control-fg: #ffffff;
-    --color-control-hover: rgba(0, 0, 0, 0.08);
+    --color-control-hover: rgba(0, 0, 0, 0.06);
 
-    --color-contrib-0: #d0d7de;
+    --color-contrib-0: #e5e5e5;
 
     --shadow-card-hover:
-      0 8px 32px rgba(0, 0, 0, 0.1), 0 0 8px rgba(0, 225, 135, 0.1);
+      0 8px 24px rgba(0, 0, 0, 0.18), 0 0 1px rgba(0, 0, 0, 0.12);
 
     --cursor-blend: multiply;
   }
@@ -76,8 +76,25 @@
   }
 
   body.light {
-    background-color: #f0f2f5;
+    background-color: #fafafa; /* Light gray instead of pure white - easier on eyes */
     color: var(--color-text-primary);
+  }
+
+  /* Show default cursor on mobile/tablet devices */
+  @media (max-width: 767px) {
+    :root {
+      cursor: auto !important;
+    }
+
+    body {
+      cursor: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+      cursor: auto !important;
+    }
   }
 }
 
@@ -101,6 +118,15 @@
     @apply transition-all duration-500;
   }
 
+  .light .glass-card::before {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 0, 0, 0.03),
+      transparent
+    );
+  }
+
   .glass-card:hover::before {
     @apply left-full;
   }
@@ -115,10 +141,28 @@
     transform: none;
   }
 
+  /* Light mode card styling */
+  .light .glass-card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow:
+      0 2px 10px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .light .glass-card:hover {
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
   .btn-primary {
     @apply px-8 py-4 rounded-xl font-medium bg-primary-500;
-    @apply text-white transition-all duration-300 relative overflow-hidden;
+    @apply transition-all duration-300 relative overflow-hidden;
     @apply hover:-translate-y-0.5 hover:bg-primary-600;
+    color: var(--color-text-primary);
   }
 
   .btn-secondary {
@@ -148,8 +192,9 @@
 
   .light .grid-overlay {
     background-image:
-      linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+    opacity: 0.4;
   }
 
   /* ── Theme utility classes ── */

@@ -1,7 +1,14 @@
-import { useState, useRef, useEffect } from 'react'
-import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVolumeUp, FaVolumeMute, FaMusic } from 'react-icons/fa'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useRef, useEffect, useCallback } from 'react'
+import {
+  FaPlay, FaPause, FaStepBackward, FaStepForward,
+  FaVolumeUp, FaVolumeMute, FaMusic,
+} from 'react-icons/fa'
+import { motion } from 'framer-motion'
 import { config } from '../../config'
+
+/** Number of equalizer bars */
+const BAR_COUNT = 12
+const bars = Array.from({ length: BAR_COUNT }, (_, i) => i)
 
 const MusicWidget = () => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -16,6 +23,14 @@ const MusicWidget = () => {
   // Handle single object vs array for backward compatibility
   const playlist = Array.isArray(config.music) ? config.music : [config.music]
   const currentSong = playlist[currentSongIndex]
+
+  const handleNext = useCallback(() => {
+    setCurrentSongIndex((prev) => (prev + 1) % playlist.length)
+  }, [playlist.length])
+
+  const handlePrev = useCallback(() => {
+    setCurrentSongIndex((prev) => (prev - 1 + playlist.length) % playlist.length)
+  }, [playlist.length])
 
   useEffect(() => {
     const audio = audioRef.current
@@ -34,14 +49,14 @@ const MusicWidget = () => {
       audio.removeEventListener('loadedmetadata', updateDuration)
       audio.removeEventListener('ended', handleEnded)
     }
-  }, [currentSongIndex])
+  }, [currentSongIndex, handleNext])
 
-  // Auto-play when song changes, but only if it was already playing or if it's a manual change
+  // Auto-play when song changes (only if already playing)
   useEffect(() => {
     if (isPlaying && audioRef.current) {
-      audioRef.current.play().catch(e => console.log("Autoplay prevented:", e))
+      audioRef.current.play().catch(() => {})
     }
-  }, [currentSongIndex])
+  }, [currentSongIndex]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const togglePlay = () => {
     if (!audioRef.current) return
@@ -56,14 +71,6 @@ const MusicWidget = () => {
     setIsMuted(!isMuted)
   }
 
-  const handleNext = () => {
-    setCurrentSongIndex((prev) => (prev + 1) % playlist.length)
-  }
-
-  const handlePrev = () => {
-    setCurrentSongIndex((prev) => (prev - 1 + playlist.length) % playlist.length)
-  }
-
   const handleProgressClick = (e) => {
     if (!audioRef.current || !progressBarRef.current) return
     const rect = progressBarRef.current.getBoundingClientRect()
@@ -74,9 +81,6 @@ const MusicWidget = () => {
   }
 
   const progress = duration ? (currentTime / duration) * 100 : 0
-
-  // Fake Equalizer Bars
-  const bars = Array.from({ length: 12 }, (_, i) => i)
 
   return (
     <div className="glass-card p-4 h-full flex flex-col gap-4 relative overflow-hidden group">
@@ -142,7 +146,7 @@ const MusicWidget = () => {
       <div className="flex items-center justify-between mt-auto">
         <button
           onClick={toggleMute}
-          className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors text-white/60 hover:text-primary-500"
+          className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors theme-text-muted hover:text-primary-500"
         >
           {isMuted ? <FaVolumeMute size={14} /> : <FaVolumeUp size={14} />}
         </button>
@@ -150,7 +154,7 @@ const MusicWidget = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={handlePrev}
-            className="text-white/40 hover:text-white transition-colors"
+            className="theme-text-muted hover:theme-text transition-colors"
           >
             <FaStepBackward size={12} />
           </button>
@@ -167,7 +171,7 @@ const MusicWidget = () => {
 
           <button
             onClick={handleNext}
-            className="text-white/40 hover:text-white transition-colors"
+            className="theme-text-muted hover:theme-text transition-colors"
           >
             <FaStepForward size={12} />
           </button>

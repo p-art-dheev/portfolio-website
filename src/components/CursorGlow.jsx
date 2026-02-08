@@ -1,13 +1,36 @@
 import { useState, useEffect, useRef } from 'react'
 
+const CURSOR_BASE_STYLE = {
+  position: 'fixed',
+  pointerEvents: 'none',
+  transform: 'translate(-50%, -50%)',
+  transition: 'width 0.15s, height 0.15s, opacity 0.15s',
+}
+
 const CursorGlow = () => {
   const dotRef = useRef(null)
   const ringRef = useRef(null)
   const glowRef = useRef(null)
   const pos = useRef({ x: 0, y: 0 })
   const isHovering = useRef(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    // Don't initialize cursor on mobile
+    if (isMobile) return
+
     const dot = dotRef.current
     const ring = ringRef.current
     const glow = glowRef.current
@@ -76,54 +99,51 @@ const CursorGlow = () => {
         el.removeEventListener('mouseleave', shrink)
       })
     }
-  }, [])
-
-  const centered = {
-    position: 'fixed',
-    pointerEvents: 'none',
-    transform: 'translate(-50%, -50%)',
-    transition: 'width 0.15s, height 0.15s, opacity 0.15s',
-  }
+  }, [isMobile])
 
   return (
     <>
-      <div
-        ref={dotRef}
-        style={{
-          ...centered,
-          zIndex: 9999,
-          width: 6,
-          height: 6,
-          borderRadius: '50%',
-          backgroundColor: '#34d399',
-          opacity: 0,
-        }}
-      />
-      <div
-        ref={ringRef}
-        style={{
-          ...centered,
-          zIndex: 9998,
-          width: 26,
-          height: 26,
-          borderRadius: '50%',
-          border: '2px solid rgba(52, 211, 153, 0.5)',
-          opacity: 0,
-        }}
-      />
-      <div
-        ref={glowRef}
-        style={{
-          ...centered,
-          zIndex: 9997,
-          width: 60,
-          height: 60,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%)',
-          mixBlendMode: 'var(--cursor-blend)',
-          opacity: 0,
-        }}
-      />
+      {!isMobile && (
+        <>
+          <div
+            ref={dotRef}
+            style={{
+              ...CURSOR_BASE_STYLE,
+              zIndex: 9999,
+              width: 6,
+              height: 6,
+              borderRadius: '50%',
+              backgroundColor: '#059669', // Updated to darker emerald
+              opacity: 0,
+            }}
+          />
+          <div
+            ref={ringRef}
+            style={{
+              ...CURSOR_BASE_STYLE,
+              zIndex: 9998,
+              width: 26,
+              height: 26,
+              borderRadius: '50%',
+              border: '2px solid rgba(5, 150, 105, 0.5)', // Updated to darker emerald
+              opacity: 0,
+            }}
+          />
+          <div
+            ref={glowRef}
+            style={{
+              ...CURSOR_BASE_STYLE,
+              zIndex: 9997,
+              width: 60,
+              height: 60,
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(5, 150, 105, 0.2) 0%, transparent 70%)', // Updated to darker emerald
+              mixBlendMode: 'var(--cursor-blend)',
+              opacity: 0,
+            }}
+          />
+        </>
+      )}
     </>
   )
 }
