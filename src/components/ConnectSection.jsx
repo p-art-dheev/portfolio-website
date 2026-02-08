@@ -66,17 +66,17 @@ const ConnectSection = () => {
                 <input
                   type="text" name="name" placeholder="Name"
                   value={formData.name} onChange={handleChange} required
-                  className="w-full px-4 py-2.5 rounded-xl border theme-border bg-transparent theme-text focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 focus:outline-none transition-all text-sm font-medium placeholder:font-medium placeholder:opacity-50"
+                  className="w-full px-4 py-2.5 rounded-xl border theme-border bg-transparent theme-text focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 focus:outline-none transition-all text-sm font-medium placeholder:font-medium theme-placeholder"
                 />
                 <input
                   type="email" name="email" placeholder="Email"
                   value={formData.email} onChange={handleChange} required
-                  className="w-full px-4 py-2.5 rounded-xl border theme-border bg-transparent theme-text focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 focus:outline-none transition-all text-sm font-medium placeholder:font-medium placeholder:opacity-50"
+                  className="w-full px-4 py-2.5 rounded-xl border theme-border bg-transparent theme-text focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 focus:outline-none transition-all text-sm font-medium placeholder:font-medium theme-placeholder"
                 />
                 <textarea
                   name="message" placeholder="Your message..."
                   value={formData.message} onChange={handleChange} required rows="3"
-                  className="w-full px-4 py-2.5 rounded-xl border theme-border bg-transparent theme-text focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 focus:outline-none transition-all text-sm font-medium resize-none placeholder:font-medium placeholder:opacity-50"
+                  className="w-full px-4 py-2.5 rounded-xl border theme-border bg-transparent theme-text focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 focus:outline-none transition-all text-sm font-medium resize-none placeholder:font-medium theme-placeholder"
                 />
                 <AnimatePresence mode="wait">
                   {status.message ? (
@@ -102,7 +102,7 @@ const ConnectSection = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-500/20 border border-primary-500/30 rounded-xl text-primary-500 font-display font-bold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed" style={{ letterSpacing: '0.03em' }}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-500/20 border border-primary-500/30 rounded-xl theme-button-text font-display font-bold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed" style={{ letterSpacing: '0.03em' }}
                     >
                       <span>{loading ? 'Sending...' : 'Send Message'}</span>
                       {!loading && <FaArrowRight className="text-xs" />}

@@ -9,6 +9,7 @@
     --color-text-primary: #e8e8f0; /* headings, main text */
     --color-text-secondary: #a8a8b8; /* subtitles, descriptions */
     --color-text-muted: #6e6e7e; /* labels, hints */
+    --color-placeholder: #a8a8b8; /* input placeholders */
 
     /* Surface colors */
     --color-surface: #13131a; /* badges, inputs, tags */
@@ -42,6 +43,7 @@
     --color-text-primary: #000000;
     --color-text-secondary: #525252;
     --color-text-muted: #737373;
+    --color-placeholder: #666666;
 
     --color-surface: #fafafa;
     --color-surface-hover: #f5f5f5;
@@ -207,6 +209,21 @@
   .theme-text-muted {
     color: var(--color-text-muted);
   }
+  .theme-greeting {
+    color: #a8a8b8; /* lighter color for dark mode greeting */
+  }
+  body.light .theme-greeting {
+    color: #6b7280; /* gray-500 for light mode */
+  }
+  .theme-name {
+    color: #10b981; /* green-500 for dark mode */
+  }
+  body.light .theme-name {
+    color: #000000; /* black for light mode */
+  }
+  .theme-placeholder::placeholder {
+    color: var(--color-placeholder);
+  }
   .theme-surface {
     background-color: var(--color-surface);
   }
@@ -227,6 +244,12 @@
   }
   .theme-control-hover:hover {
     background-color: var(--color-control-hover);
+  }
+  .theme-button-text {
+    color: #ffffff; /* white in dark mode */
+  }
+  body.light .theme-button-text {
+    color: #000000; /* black in light mode */
   }
 }
 

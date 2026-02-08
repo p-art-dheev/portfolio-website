@@ -13,7 +13,7 @@ export const config = {
       "I'm a B.Tech AI Engineering student interested in web development and generative AI, and I like learning new tools while working on practical projects that help me improve step by step through hands-on experience.",
       "I also enjoy exploring creative tech like digital art and 3D design, which adds a different perspective to how I build and think about things.",
     ],
-    email: 'your.email@example.com',
+    email: 'pardheev.vatturu1234@gmail.com',
     website: 'pardheev.online',
     profileImage: '/assets/images/profile.jpg',
   },
@@ -54,16 +54,16 @@ export const config = {
   // ---- GitHub Integration ----
   github: {
     username: 'p-art-dheev',
-    startYear: 2023, // Earliest year shown in the year selector
+    startYear: 2025, // Earliest year shown in the year selector
   },
 
   // ---- Social Links ----
   socials: [
-    { name: 'GitHub', icon: 'FaGithub', url: 'https://github.com/yourusername', hoverColor: 'group-hover:text-gray-300' },
-    { name: 'LinkedIn', icon: 'FaLinkedin', url: 'https://linkedin.com/in/yourusername', hoverColor: 'group-hover:text-[#0A66C2]' },
+    { name: 'GitHub', icon: 'FaGithub', url: 'https://github.com/p-art-dheev', hoverColor: 'group-hover:text-gray-300' },
+    { name: 'LinkedIn', icon: 'FaLinkedin', url: 'https://www.linkedin.com/in/pardheev-vatturu-863399284/', hoverColor: 'group-hover:text-[#0A66C2]' },
     { name: 'Twitter', icon: 'FaTwitter', url: 'https://twitter.com/yourusername', hoverColor: 'group-hover:text-[#1DA1F2]' },
-    { name: 'Instagram', icon: 'FaInstagram', url: 'https://instagram.com/yourusername', hoverColor: 'group-hover:text-[#E4405F]' },
-    { name: 'pardheev.vatturu1234@gmail.com', icon: 'FaEnvelope', url: 'mailto:your.email@example.com', hoverColor: 'group-hover:text-green-500' },
+    { name: 'Instagram', icon: 'FaInstagram', url: 'https://www.instagram.com/graphicoal__arts/', hoverColor: 'group-hover:text-[#E4405F]' },
+    { name: 'pardheev.vatturu1234@gmail.com', icon: 'FaEnvelope', url: 'mailto:pardheev.vatturu1234@gmail.com', hoverColor: 'group-hover:text-green-500' },
   ],
 
   // ---- Tech Stack ----

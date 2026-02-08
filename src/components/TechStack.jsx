@@ -38,7 +38,7 @@ const TechStack = () => {
         transition={{ duration: 0.6 }}
         className="glass-card p-6 md:p-8"
       >
-        <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-4 text-center" style={{ letterSpacing: '-0.02em' }}>Technologies Experienced With</h2>
+        <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-4 text-center" style={{ letterSpacing: '-0.02em' }}>Tools & Technologies Experienced With</h2>
 
         <div className="flex flex-col gap-4">
           {/* Single scrolling row */}

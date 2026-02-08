@@ -56,7 +56,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="text-xl md:text-2xl font-normal opacity-60 theme-text"
+                  className="text-2xl md:text-3xl font-semibold opacity-60 theme-greeting"
                   style={{ fontFamily: "'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Tamil', 'Noto Sans Arabic', 'Space Grotesk', sans-serif" }}
                 >
                   {GREETINGS[greetIndex]} 
@@ -66,8 +66,8 @@ const Hero = () => {
 
             {/* I'm + Name */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold leading-tight mb-4" style={{ letterSpacing: '-0.02em' }}>
-              <span className="theme-text">I'm </span>
-              <span className="theme-text">{config.personal.name}</span>
+              <span className="theme-greeting">I'm </span>
+              <span className="theme-name">{config.personal.name}</span>
             </h1>
 
             {/* Tagline pill */}
@@ -87,6 +87,7 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('/assets/resume/Pardheev_s_Resume.pdf', '_blank')}
                 className="flex items-center gap-2 px-4 py-2.5 bg-primary-500/20 border border-primary-500/30 rounded-xl theme-text font-display font-semibold text-sm transition-all"
               >
                 <FaFileAlt />
@@ -96,6 +97,12 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const element = document.getElementById('contact')
+                  if (element) {
+                    window.scrollTo({ top: element.offsetTop - 100, behavior: 'smooth' })
+                  }
+                }}
                 className="btn-secondary flex items-center gap-2 text-sm font-display font-semibold"
               >
                 <FaEnvelope />
@@ -106,37 +113,52 @@ const Hero = () => {
 
           {/* Profile Picture */}
           <motion.div
-            className="hidden md:flex w-40 h-40 lg:w-48 lg:h-48 rounded-2xl bg-primary-500 items-center justify-center relative overflow-hidden flex-shrink-0 shadow-2xl"
+            className="flex w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-2xl items-center justify-center relative flex-shrink-0 md:flex-shrink-0 mx-auto md:mx-0 mb-6 md:mb-0"
           >
-            {config.personal.profileImage ? (
-              <img
-                src={config.personal.profileImage}
-                alt={config.personal.name}
-                className="w-full h-full object-cover z-10"
-              />
-            ) : (
-              <>
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-                <FaUser className="text-5xl lg:text-6xl text-white/90 z-10" />
-              </>
-            )}
-
-            {/* Animated border glow */}
+            {/* Pulsing outer ring */}
             <motion.div
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                border: '2px solid rgba(16, 185, 129, 0.5)',
-                boxShadow: '0 0 30px rgba(16, 185, 129, 0.3)',
-              }}
+              className="absolute inset-[-8px] rounded-3xl border-2 border-primary-500/30"
               animate={{
-                boxShadow: [
-                  '0 0 30px rgba(16, 185, 129, 0.3)',
-                  '0 0 50px rgba(16, 185, 129, 0.5)',
-                  '0 0 30px rgba(16, 185, 129, 0.3)',
-                ],
+                scale: [1, 1.05, 1],
+                opacity: [0.5, 0.8, 0.5],
               }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             />
+
+            {/* Multi-layered animated border */}
+            <div className="relative rounded-2xl overflow-hidden border-4 border-primary-500/50">
+              <div className="w-full h-full rounded-2xl bg-dark-500 relative overflow-hidden">
+                {/* Inner glow */}
+                <motion.div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    border: '2px solid rgba(16, 185, 129, 0.6)',
+                    boxShadow: 'inset 0 0 30px rgba(16, 185, 129, 0.2)',
+                  }}
+                  animate={{
+                    boxShadow: [
+                      'inset 0 0 30px rgba(16, 185, 129, 0.2)',
+                      'inset 0 0 50px rgba(16, 185, 129, 0.4)',
+                      'inset 0 0 30px rgba(16, 185, 129, 0.2)',
+                    ],
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                />
+
+                {config.personal.profileImage ? (
+                  <img
+                    src={config.personal.profileImage}
+                    alt={config.personal.name}
+                    className="w-full h-full object-cover relative z-10 rounded-2xl"
+                  />
+                ) : (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+                    <FaUser className="text-5xl lg:text-6xl text-white/90 absolute inset-0 flex items-center justify-center z-10" />
+                  </>
+                )}
+              </div>
+            </div>
           </motion.div>
         </motion.div>
 

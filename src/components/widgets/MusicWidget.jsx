@@ -154,9 +154,9 @@ const MusicWidget = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={handlePrev}
-            className="theme-text-muted hover:theme-text transition-colors"
+            className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors theme-text-muted hover:text-primary-500"
           >
-            <FaStepBackward size={12} />
+            <FaStepBackward size={14} />
           </button>
 
           <button
@@ -171,9 +171,9 @@ const MusicWidget = () => {
 
           <button
             onClick={handleNext}
-            className="theme-text-muted hover:theme-text transition-colors"
+            className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors theme-text-muted hover:text-primary-500"
           >
-            <FaStepForward size={12} />
+            <FaStepForward size={14} />
           </button>
         </div>
 
