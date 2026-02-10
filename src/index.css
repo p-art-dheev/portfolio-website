@@ -34,9 +34,6 @@
 
     /* Cursor glow blend */
     --cursor-blend: screen;
-
-    /* Hide default cursor */
-    cursor: none;
   }
 
   body.light {
@@ -68,13 +65,11 @@
     @apply font-sans antialiased;
     background-color: #0a0a0f;
     color: var(--color-text-primary);
-    cursor: none;
   }
 
   *,
   *::before,
   *::after {
-    cursor: none !important;
   }
 
   body.light {

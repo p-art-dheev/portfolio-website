@@ -126,11 +126,11 @@ const Hero = () => {
             />
 
             {/* Multi-layered animated border */}
-            <div className="relative rounded-2xl overflow-hidden border-4 border-primary-500/50">
-              <div className="w-full h-full rounded-2xl bg-dark-500 relative overflow-hidden">
+            <div className="relative rounded-3xl overflow-hidden border-4 border-primary-500/50 w-full h-full">
+              <div className="w-full h-full rounded-3xl bg-dark-500 relative overflow-hidden">
                 {/* Inner glow */}
-                <motion.div
-                  className="absolute inset-0 rounded-2xl"
+                  <motion.div
+                  className="absolute inset-0 rounded-3xl"
                   style={{
                     border: '2px solid rgba(16, 185, 129, 0.6)',
                     boxShadow: 'inset 0 0 30px rgba(16, 185, 129, 0.2)',
@@ -149,7 +149,7 @@ const Hero = () => {
                   <img
                     src={config.personal.profileImage}
                     alt={config.personal.name}
-                    className="w-full h-full object-cover relative z-10 rounded-2xl"
+                    className="block w-full h-full object-cover z-10 rounded-3xl"
                   />
                 ) : (
                   <>

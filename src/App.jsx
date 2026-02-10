@@ -6,7 +6,6 @@ import About from './components/About'
 import TechStack from './components/TechStack'
 import Projects from './components/Projects'
 import ConnectSection from './components/ConnectSection'
-import CursorGlow from './components/CursorGlow'
 import ScrollToTop from './components/ScrollToTop'
 import ParticleBackground from './components/ParticleBackground'
 
@@ -39,9 +38,6 @@ function App() {
       
       {/* Particle Background */}
       <ParticleBackground />
-      
-      {/* Cursor Glow */}
-      <CursorGlow />
       
       {/* Content */}
       <div className="relative z-10">
