@@ -15,7 +15,8 @@ export const config = {
     ],
     email: 'pardheev.vatturu1234@gmail.com',
     website: 'pardheev.online',
-    profileImage: '/assets/images/profile.jpg',
+    profileImage: '/assets/images/profile1.jpeg',
+    profileImage2: '/assets/images/profile2.png',
   },
 
   // ---- Education ----

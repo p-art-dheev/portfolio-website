@@ -32,10 +32,10 @@ const calculateStreaks = (contributions) => {
   return { total, current, longest }
 }
 
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 const ordinal = (n) => {
-  const s = ['th','st','nd','rd']
+  const s = ['th', 'st', 'nd', 'rd']
   const v = n % 100
   return n + (s[(v - 20) % 10] || s[v] || s[0])
 }
@@ -106,7 +106,8 @@ const About = () => {
       >
         {/* About Card */}
         <div className="glass-card p-6 md:p-8">
-          <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-4 text-center" style={{ letterSpacing: '-0.02em' }}>About Me</h2>
+          <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-2 text-center" style={{ letterSpacing: '-0.02em' }}>About Me</h2>
+          <p className="text-center theme-text-sub text-sm md:text-base mb-8 max-w-2xl mx-auto">Get to know the person behind the code.</p>
           <div className="space-y-3 text-sm md:text-base theme-text-sub leading-relaxed font-sans">
             {config.personal.bio.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>

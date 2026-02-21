@@ -179,19 +179,14 @@
   }
 
   .grid-overlay {
-    @apply fixed inset-0 pointer-events-none opacity-50;
-    background-image:
-      linear-gradient(rgba(0, 225, 135, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 225, 135, 0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: gridPulse 8s ease-in-out infinite;
+    @apply fixed inset-0 pointer-events-none opacity-[0.15];
+    background-image: radial-gradient(var(--color-text-primary) 1px, transparent 1px);
+    background-size: 24px 24px;
+    animation: none;
   }
 
   .light .grid-overlay {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
-    opacity: 0.4;
+    opacity: 0.15;
   }
 
   /* ── Theme utility classes ── */

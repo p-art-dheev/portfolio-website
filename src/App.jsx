@@ -7,7 +7,6 @@ import TechStack from './components/TechStack'
 import Projects from './components/Projects'
 import ConnectSection from './components/ConnectSection'
 import ScrollToTop from './components/ScrollToTop'
-import ParticleBackground from './components/ParticleBackground'
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -35,15 +34,12 @@ function App() {
     <div className="relative min-h-screen" style={{ overflowX: 'clip' }}>
       {/* Grid Overlay */}
       <div className="grid-overlay" />
-      
-      {/* Particle Background */}
-      <ParticleBackground />
-      
+
       {/* Content */}
       <div className="relative z-10">
         <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
-        
-        <main className="max-w-[1400px] mx-auto px-4 md:px-8 pt-2">
+
+        <main className="max-w-6xl mx-auto px-4 md:px-8 lg:px-12 pt-2">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -57,7 +53,7 @@ function App() {
             <ConnectSection />
           </motion.div>
         </main>
-        
+
         <ScrollToTop />
       </div>
     </div>

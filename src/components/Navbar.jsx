@@ -48,7 +48,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="sticky top-0 z-[100] mx-auto max-w-[1400px] px-4 md:px-8 pt-3 pb-2 transition-all duration-300"
+      className="sticky top-0 z-[100] mx-auto max-w-6xl px-4 md:px-8 lg:px-12 pt-3 pb-2 transition-all duration-300"
     >
       <div className={`glass-card px-5 py-3 ${isScrolled ? 'shadow-2xl' : ''}`}>
         <div className="flex justify-between items-center">

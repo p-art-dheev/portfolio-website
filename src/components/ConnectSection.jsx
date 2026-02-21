@@ -57,7 +57,8 @@ const ConnectSection = () => {
           transition={{ duration: 0.6 }}
           className="glass-card p-6 md:p-8"
         >
-          <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-6 text-center" style={{ letterSpacing: '-0.02em' }}>Let's Connect</h2>
+          <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-2 text-center" style={{ letterSpacing: '-0.02em' }}>Let's Connect</h2>
+          <p className="text-center theme-text-sub text-sm md:text-base mb-8 max-w-2xl mx-auto">Feel free to reach out for collaborations or just a friendly hello.</p>
 
           <div className="flex flex-col md:flex-row gap-6">
             {/* Contact form — LHS */}
@@ -127,14 +128,14 @@ const ConnectSection = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      initial={{ opacity: 0, x: 15 }}
-                      animate={inView ? { opacity: 1, x: 0 } : {}}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={inView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ delay: index * 0.08 }}
-                      whileHover={{ scale: 1.05 }}
-                      className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border theme-border theme-surface-hover transition-all group min-w-[110px]"
+                      whileHover={{ scale: 1.1, translateY: -2 }}
+                      className="flex items-center justify-center w-12 h-12 rounded-xl border theme-border theme-surface-hover transition-all group"
+                      title={social.name}
                     >
-                      {Icon && <Icon className={`text-lg ${social.hoverColor} transition-colors`} />}
-                      <span className={`text-sm font-display font-semibold theme-text-sub ${social.hoverColor} transition-colors whitespace-nowrap`} style={{ letterSpacing: '0.02em' }}>{social.name}</span>
+                      {Icon && <Icon className={`text-xl ${social.hoverColor} transition-colors`} />}
                     </motion.a>
                   )
                 })}

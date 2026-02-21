@@ -48,7 +48,7 @@ const Hero = () => {
         >
           <div className="flex-1">
             {/* Greeting */}
-            <div className="h-7 md:h-8 mb-3 flex items-center">
+            <div className="h-6 md:h-7 mb-2 flex items-center">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={greetIndex}
@@ -56,18 +56,18 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="text-2xl md:text-3xl font-semibold opacity-60 theme-greeting"
+                  className="text-lg md:text-xl lg:text-2xl font-semibold opacity-60 theme-greeting"
                   style={{ fontFamily: "'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Tamil', 'Noto Sans Arabic', 'Space Grotesk', sans-serif" }}
                 >
-                  {GREETINGS[greetIndex]} 
+                  {GREETINGS[greetIndex]}
                 </motion.span>
               </AnimatePresence>
             </div>
 
             {/* I'm + Name */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold leading-tight mb-4" style={{ letterSpacing: '-0.02em' }}>
-              <span className="theme-greeting">I'm </span>
-              <span className="theme-name">{config.personal.name}</span>
+            <h1 className="flex items-baseline leading-tight mb-4 whitespace-nowrap font-display" style={{ letterSpacing: '-0.02em' }}>
+              <span className="text-xl md:text-2xl lg:text-3xl font-bold theme-greeting mr-2 opacity-80">I'm</span>
+              <span className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-extrabold theme-name">{config.personal.name}</span>
             </h1>
 
             {/* Tagline pill */}
@@ -113,51 +113,25 @@ const Hero = () => {
 
           {/* Profile Picture */}
           <motion.div
-            className="hidden md:flex w-40 h-40 lg:w-48 lg:h-48 rounded-2xl items-center justify-center relative flex-shrink-0"
+            className="hidden md:flex w-40 h-40 lg:w-56 lg:h-56 relative flex-shrink-0"
           >
-            {/* Pulsing outer ring */}
-            <motion.div
-              className="absolute inset-[-8px] rounded-3xl border-2 border-primary-500/30"
-              animate={{
-                scale: [1, 1.05, 1],
-                opacity: [0.5, 0.8, 0.5],
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            />
+            {/* Decorative Offset Frame */}
+            <div className="absolute inset-0 rounded-2xl border-2 border-primary-500/40 translate-x-4 translate-y-4" />
 
-            {/* Multi-layered animated border */}
-            <div className="relative rounded-3xl overflow-hidden border-4 border-primary-500/50 w-full h-full">
-              <div className="w-full h-full rounded-3xl bg-dark-500 relative overflow-hidden">
-                {/* Inner glow */}
-                  <motion.div
-                  className="absolute inset-0 rounded-3xl"
-                  style={{
-                    border: '2px solid rgba(16, 185, 129, 0.6)',
-                    boxShadow: 'inset 0 0 30px rgba(16, 185, 129, 0.2)',
-                  }}
-                  animate={{
-                    boxShadow: [
-                      'inset 0 0 30px rgba(16, 185, 129, 0.2)',
-                      'inset 0 0 50px rgba(16, 185, 129, 0.4)',
-                      'inset 0 0 30px rgba(16, 185, 129, 0.2)',
-                    ],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            {/* Main Image Container */}
+            <div className="absolute inset-0 rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-[#13131a] z-10">
+              {config.personal.profileImage ? (
+                <img
+                  src={config.personal.profileImage}
+                  alt={config.personal.name}
+                  className="block w-full h-full object-cover"
                 />
-
-                {config.personal.profileImage ? (
-                  <img
-                    src={config.personal.profileImage}
-                    alt={config.personal.name}
-                    className="block w-full h-full object-cover z-10 rounded-3xl"
-                  />
-                ) : (
-                  <>
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-                    <FaUser className="text-5xl lg:text-6xl text-white/90 absolute inset-0 flex items-center justify-center z-10" />
-                  </>
-                )}
-              </div>
+              ) : (
+                <>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+                  <FaUser className="text-5xl lg:text-6xl text-white/90 absolute inset-0 m-auto flex items-center justify-center z-10" />
+                </>
+              )}
             </div>
           </motion.div>
         </motion.div>
