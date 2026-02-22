@@ -3,6 +3,7 @@ import { FaClock } from 'react-icons/fa'
 
 const StatusWidget = () => {
   const [time, setTime] = useState('')
+  const [isAway, setIsAway] = useState(false)
 
   useEffect(() => {
     const updateTime = () => {
@@ -16,6 +17,10 @@ const StatusWidget = () => {
           hour12: true,
         }),
       )
+
+      const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }))
+      const hour = istTime.getHours()
+      setIsAway(hour >= 0 && hour < 8)
     }
 
     updateTime()
@@ -24,22 +29,30 @@ const StatusWidget = () => {
   }, [])
 
   return (
-    <div className="glass-card p-4 h-full flex flex-col justify-center">
-      <div className="flex flex-col gap-2.5">
+    <div className="glass-card p-3 h-full flex flex-col justify-center">
+      <div className="flex flex-col gap-1.5">
         <div className="flex items-center gap-2">
           <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-500" />
+            {isAway ? (
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500" />
+            ) : (
+              <>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-500" />
+              </>
+            )}
           </span>
-          <span className="text-[10px] font-semibold text-primary-500 uppercase" style={{ letterSpacing: '0.12em' }}>Online</span>
+          <span className={`text-[10px] font-semibold uppercase ${isAway ? 'text-yellow-500' : 'text-primary-500'}`} style={{ letterSpacing: '0.12em' }}>
+            {isAway ? 'Away' : 'Online'}
+          </span>
         </div>
 
-        <div className="flex flex-col gap-1">
+        <div className="flex items-baseline flex-wrap gap-x-2 gap-y-1 mt-1">
           <div className="flex items-center gap-2 theme-text-sub">
-            <FaClock className="text-lg" />
-            <span className="text-2xl font-display font-bold" style={{ fontVariantNumeric: 'tabular-nums' }}>{time}</span>
+            <FaClock className="text-lg md:text-xl" />
+            <span className="text-xl md:text-2xl font-display font-bold" style={{ fontVariantNumeric: 'tabular-nums' }}>{time}</span>
           </div>
-          <span className="text-[10px] theme-text-muted font-sans ml-6 uppercase" style={{ letterSpacing: '0.12em' }}>IST (India)</span>
+          <span className="text-[10px] theme-text-muted font-sans uppercase" style={{ letterSpacing: '0.12em' }}>IST (India)</span>
         </div>
       </div>
     </div>

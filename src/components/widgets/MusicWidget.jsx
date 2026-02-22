@@ -54,7 +54,7 @@ const MusicWidget = () => {
   // Auto-play when song changes (only if already playing)
   useEffect(() => {
     if (isPlaying && audioRef.current) {
-      audioRef.current.play().catch(() => {})
+      audioRef.current.play().catch(() => { })
     }
   }, [currentSongIndex]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -83,14 +83,14 @@ const MusicWidget = () => {
   const progress = duration ? (currentTime / duration) * 100 : 0
 
   return (
-    <div className="glass-card p-4 h-full flex flex-col gap-4 relative overflow-hidden group">
+    <div className="glass-card p-3 h-full flex flex-col gap-2.5 relative overflow-hidden group">
       {currentSong?.audioFile && (
         <audio ref={audioRef} src={currentSong.audioFile} />
       )}
 
       {/* Album Art & Equalizer */}
-      <div className="flex items-center gap-4">
-        <div className="relative w-14 h-14 rounded-xl overflow-hidden shadow-lg border border-white/10 shrink-0">
+      <div className="flex items-center gap-3">
+        <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg border border-white/10 shrink-0">
           {currentSong?.coverArt ? (
             <img
               src={currentSong.coverArt}
@@ -146,22 +146,22 @@ const MusicWidget = () => {
       <div className="flex items-center justify-between mt-auto">
         <button
           onClick={toggleMute}
-          className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors theme-text-muted hover:text-primary-500"
+          className="w-7 h-7 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors theme-text-muted hover:text-primary-500"
         >
-          {isMuted ? <FaVolumeMute size={14} /> : <FaVolumeUp size={14} />}
+          {isMuted ? <FaVolumeMute size={12} /> : <FaVolumeUp size={12} />}
         </button>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <button
             onClick={handlePrev}
-            className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors theme-text-muted hover:text-primary-500"
+            className="w-7 h-7 rounded-full hover:bg-white/5 flex items-center justify-center transition-colors theme-text-muted hover:text-primary-500"
           >
-            <FaStepBackward size={14} />
+            <FaStepBackward size={12} />
           </button>
 
           <button
             onClick={togglePlay}
-            className="w-10 h-10 rounded-full bg-primary-500 hover:bg-primary-400 flex items-center justify-center transition-all shadow-lg shadow-primary-500/20 active:scale-95"
+            className="w-9 h-9 rounded-full bg-primary-500 hover:bg-primary-400 flex items-center justify-center transition-all shadow-lg shadow-primary-500/20 active:scale-95"
           >
             {isPlaying ?
               <FaPause className="text-white ml-[1px]" size={14} /> :

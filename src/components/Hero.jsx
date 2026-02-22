@@ -39,12 +39,12 @@ const Hero = () => {
         variants={container}
         initial="hidden"
         animate="show"
-        className="w-full grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-4 auto-rows-[minmax(80px,auto)]"
+        className="w-full grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-3 auto-rows-[minmax(60px,auto)]"
       >
         {/* Main Hero Card */}
         <motion.div
           variants={item}
-          className="glass-card col-span-1 md:col-span-8 lg:col-span-7 row-span-3 p-6 md:p-8 flex items-center gap-6"
+          className="glass-card col-span-1 md:col-span-8 lg:col-span-7 row-span-3 p-5 md:p-6 flex items-center gap-5"
         >
           <div className="flex-1">
             {/* Greeting */}
@@ -56,7 +56,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="text-lg md:text-xl lg:text-2xl font-semibold opacity-60 theme-greeting"
+                  className="text-base md:text-lg lg:text-xl font-semibold opacity-60 theme-greeting"
                   style={{ fontFamily: "'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Tamil', 'Noto Sans Arabic', 'Space Grotesk', sans-serif" }}
                 >
                   {GREETINGS[greetIndex]}
@@ -65,9 +65,9 @@ const Hero = () => {
             </div>
 
             {/* I'm + Name */}
-            <h1 className="flex items-baseline leading-tight mb-4 whitespace-nowrap font-display" style={{ letterSpacing: '-0.02em' }}>
-              <span className="text-xl md:text-2xl lg:text-3xl font-bold theme-greeting mr-2 opacity-80">I'm</span>
-              <span className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-extrabold theme-name">{config.personal.name}</span>
+            <h1 className="flex items-baseline leading-tight mb-3 whitespace-nowrap font-display" style={{ letterSpacing: '-0.02em' }}>
+              <span className="text-lg md:text-xl lg:text-2xl font-bold theme-greeting mr-2 opacity-80">I'm</span>
+              <span className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-extrabold theme-name">{config.personal.name}</span>
             </h1>
 
             {/* Tagline pill */}
@@ -88,7 +88,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.open('/assets/resume/Pardheev_s_Resume.pdf', '_blank')}
-                className="flex items-center gap-2 px-4 py-3 bg-primary-500/20 border border-primary-500/30 rounded-xl theme-text font-display font-semibold text-sm transition-all min-w-[120px] justify-center"
+                className="flex items-center gap-2 px-4 py-2.5 bg-primary-500/20 border border-primary-500/30 rounded-xl theme-text font-display font-semibold text-sm transition-all min-w-[120px] justify-center"
               >
                 <FaFileAlt />
                 <span>Read Resume</span>
@@ -103,7 +103,7 @@ const Hero = () => {
                     window.scrollTo({ top: element.offsetTop - 100, behavior: 'smooth' })
                   }
                 }}
-                className="flex items-center gap-2 px-4 py-3 btn-secondary text-sm font-display font-semibold min-w-[120px] justify-center"
+                className="flex items-center gap-2 px-4 py-2.5 btn-secondary text-sm font-display font-semibold min-w-[120px] justify-center"
               >
                 <FaEnvelope />
                 <span>Contact</span>
@@ -113,13 +113,19 @@ const Hero = () => {
 
           {/* Profile Picture */}
           <motion.div
-            className="hidden md:flex w-40 h-40 lg:w-56 lg:h-56 relative flex-shrink-0"
+            className="hidden md:flex w-32 h-32 lg:w-48 lg:h-48 relative flex-shrink-0 group cursor-pointer"
           >
-            {/* Decorative Offset Frame */}
-            <div className="absolute inset-0 rounded-2xl border-2 border-primary-500/40 translate-x-4 translate-y-4" />
+            {/* Outer Pulsing Glow */}
+            <div className="absolute -inset-4 rounded-full bg-primary-500/10 blur-xl animate-pulse transition-all duration-500" />
+
+            {/* Pulsating Inner Ring */}
+            <div className="absolute -inset-1 rounded-full border-[3px] border-primary-500/40 animate-pulse transition-all duration-300" />
+
+            {/* Soft Glow effect behind image */}
+            <div className="absolute inset-0 rounded-full bg-primary-500/10 blur-md transition-all duration-500" />
 
             {/* Main Image Container */}
-            <div className="absolute inset-0 rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-[#13131a] z-10">
+            <div className="absolute inset-0 rounded-full border-[3px] border-primary-500/30 overflow-hidden shadow-[0_0_20px_rgba(var(--color-primary-500),0.3)] bg-[#13131a] z-10 transition-all duration-500">
               {config.personal.profileImage ? (
                 <img
                   src={config.personal.profileImage}

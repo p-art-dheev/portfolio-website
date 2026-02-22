@@ -17,7 +17,7 @@ const Socials = () => {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Let's Connect</h2>
+        <h2 className="text-xl md:text-2xl font-bold mb-4">Let's Connect</h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {config.socials.map((social, index) => {

@@ -19,9 +19,9 @@ const QuoteWidget = () => {
   const { text, author } = quotes[currentIndex]
 
   return (
-    <div className="glass-card p-4 h-full flex items-center">
+    <div className="glass-card p-3 h-full flex items-center">
       <div className="relative w-full">
-        <FaQuoteLeft className="absolute -top-1 -left-1 text-2xl text-primary-500 opacity-30" />
+        <FaQuoteLeft className="absolute -top-1 -left-1 text-xl md:text-2xl text-primary-500 opacity-30" />
 
         <AnimatePresence mode="wait">
           <motion.div
@@ -30,10 +30,10 @@ const QuoteWidget = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="pl-6"
+            className="pl-5 md:pl-6"
           >
-            <p className="text-sm md:text-base italic mb-1 opacity-80 leading-relaxed font-sans">{text}</p>
-            <p className="text-right theme-text-sub text-xs font-display opacity-60">— {author}</p>
+            <p className="text-xs md:text-sm italic mb-1 opacity-80 leading-relaxed font-sans">{text}</p>
+            <p className="text-right theme-text-sub text-[10px] md:text-xs font-display opacity-60">— {author}</p>
           </motion.div>
         </AnimatePresence>
       </div>

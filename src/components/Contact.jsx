@@ -33,7 +33,7 @@ const Contact = () => {
         transition={{ duration: 0.6 }}
         className="glass-card p-6 md:p-8 max-w-3xl mx-auto"
       >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Get In Touch</h2>
+        <h2 className="text-xl md:text-2xl font-bold mb-4">Get In Touch</h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>

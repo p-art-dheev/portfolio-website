@@ -20,8 +20,7 @@ const Projects = () => {
         transition={{ duration: 0.6 }}
         className="glass-card p-6 md:p-8"
       >
-        <h2 className="text-2xl md:text-3xl font-display font-extrabold mb-2 text-center" style={{ letterSpacing: '-0.02em' }}>Projects</h2>
-        <p className="text-center theme-text-sub text-sm md:text-base mb-8 max-w-2xl mx-auto">Showcasing some of my recent work and open source contributions.</p>
+        <h2 className="text-xl md:text-2xl font-display font-extrabold mb-8 text-center" style={{ letterSpacing: '-0.02em' }}>Projects</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {config.projects.map((project, index) => {
