@@ -125,20 +125,28 @@ const Projects = () => {
 
                   {/* Action buttons */}
                   <div className="flex gap-4 pt-4 border-t theme-border mt-auto">
-                    <a
-                      href="#"
-                      className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
-                    >
-                      <FaExternalLinkAlt className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform text-xs" />
-                      Live Demo
-                    </a>
-                    <a
-                      href="#"
-                      className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
-                    >
-                      <FaGithub className="group-hover/link:-translate-y-0.5 transition-transform text-xs" />
-                      Source Code
-                    </a>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
+                      >
+                        <FaExternalLinkAlt className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform text-xs" />
+                        Live Demo
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
+                      >
+                        <FaGithub className="group-hover/link:-translate-y-0.5 transition-transform text-xs" />
+                        Source Code
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>

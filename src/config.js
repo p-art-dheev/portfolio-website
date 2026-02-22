@@ -85,11 +85,13 @@ export const config = {
   // ---- Projects ----
   projects: [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with React and Node.js',
+      title: 'Codeproctor',
+      description: 'A technical assessment and proctoring platform built with Next.js and Serverless Postgres.',
       icon: 'FaLaptopCode',
-      tags: ['React', 'Node.js', 'MongoDB'],
+      tags: ['Next.js', 'PostgreSQL', 'Tailwind', 'NextAuth'],
       gradient: 'from-green-500 to-emerald-500',
+      liveUrl: 'https://codeproctor.vercel.app/',
+      githubUrl: 'https://github.com/TeamKraken-D03/codeproctor',
       images: [
         '/assets/projects/1/1.png',
         '/assets/projects/1/2.png',
