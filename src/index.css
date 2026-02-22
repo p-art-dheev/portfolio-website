@@ -73,7 +73,7 @@
   }
 
   body.light {
-    background-color: #fafafa; /* Light gray instead of pure white - easier on eyes */
+    background-color: #f5f0eb; /* A warm beige/gray tint */
     color: var(--color-text-primary);
   }
 
@@ -138,21 +138,21 @@
     transform: none;
   }
 
-  /* Light mode card styling */
+  /* Light mode card styling - Warm */
   .light .glass-card {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(245, 240, 235, 0.45); /* Warm ivory/beige tint */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow:
-      0 2px 10px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      0 2px 10px rgba(115, 100, 90, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .light .glass-card:hover {
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(245, 240, 235, 0.65); /* Warm tint on hover as well */
     box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      0 4px 24px rgba(115, 100, 90, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
   .btn-primary {

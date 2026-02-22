@@ -90,6 +90,12 @@ export const config = {
       icon: 'FaLaptopCode',
       tags: ['React', 'Node.js', 'MongoDB'],
       gradient: 'from-green-500 to-emerald-500',
+      images: [
+        '/assets/projects/1/1.png',
+        '/assets/projects/1/2.png',
+        '/assets/projects/1/3.png',
+        '/assets/projects/1/4.png',
+      ]
     },
     {
       title: 'Task Management App',
@@ -97,6 +103,10 @@ export const config = {
       icon: 'FaMobileAlt',
       tags: ['Vue.js', 'Firebase', 'Tailwind'],
       gradient: 'from-emerald-500 to-teal-500',
+      images: [
+        'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?w=800&q=80',
+        'https://images.unsplash.com/photo-1607748851687-ba9a10438621?w=800&q=80',
+      ]
     },
     {
       title: 'Analytics Dashboard',
@@ -104,6 +114,10 @@ export const config = {
       icon: 'FaChartLine',
       tags: ['React', 'D3.js', 'Express'],
       gradient: 'from-lime-500 to-green-500',
+      images: [
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+      ]
     },
     {
       title: 'AI Chatbot',
@@ -111,6 +125,10 @@ export const config = {
       icon: 'FaRobot',
       tags: ['Python', 'TensorFlow', 'FastAPI'],
       gradient: 'from-teal-500 to-cyan-500',
+      images: [
+        'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80',
+        'https://images.unsplash.com/photo-1599839619722-39751411ea63?w=800&q=80',
+      ]
     },
   ],
 
