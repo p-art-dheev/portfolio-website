@@ -8,10 +8,6 @@ import TechStack from './components/TechStack'
 import Projects from './components/Projects'
 import ConnectSection from './components/ConnectSection'
 import ScrollToTop from './components/ScrollToTop'
-import AnalyticsTracker from './components/AnalyticsTracker'
-import AdminLayout from './components/admin/AdminLayout'
-import AdminLogin from './components/admin/AdminLogin'
-import AdminDashboard from './components/admin/AdminDashboard'
 
 function Portfolio({ darkMode, toggleTheme }) {
   return (
@@ -62,17 +58,12 @@ function App() {
 
   return (
     <div className="relative min-h-screen" style={{ overflowX: 'clip' }}>
-      <AnalyticsTracker />
       {/* Grid Overlay */}
       <div className="grid-overlay" />
 
       {/* Content */}
       <Routes>
         <Route path="/" element={<Portfolio darkMode={darkMode} toggleTheme={toggleTheme} />} />
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="login" element={<AdminLogin />} />
-        </Route>
       </Routes>
     </div>
   )
