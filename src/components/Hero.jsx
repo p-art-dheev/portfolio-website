@@ -2,8 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaFileAlt, FaEnvelope, FaUser } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 import StatusWidget from './widgets/StatusWidget'
-import MusicWidget from './widgets/MusicWidget'
-import QuoteWidget from './widgets/QuoteWidget'
+// import MusicWidget from './widgets/MusicWidget'
 import EducationWidget from './widgets/EducationWidget'
 import { config } from '../config'
 
@@ -151,14 +150,11 @@ const Hero = () => {
           <EducationWidget />
         </motion.div>
 
-        <motion.div variants={item} className="col-span-1 md:col-span-4 lg:col-span-3 row-span-1">
+        {/* <motion.div variants={item} className="col-span-1 md:col-span-4 lg:col-span-3 row-span-1">
           <MusicWidget />
-        </motion.div>
+        </motion.div> */}
 
-        {/* Quote */}
-        <motion.div variants={item} className="col-span-1 md:col-span-8 lg:col-span-10 row-span-1">
-          <QuoteWidget />
-        </motion.div>
+        
       </motion.div>
     </section>
   )
