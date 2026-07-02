@@ -24,7 +24,7 @@ export const config = {
     degree: 'B. Tech CSE-AI',
     university: 'Amrita Vishwa Vidyapeetham, Coimbatore',
     years: '2023 - 2027',
-    gpa: '8.24',
+    gpa: '8.25',
   },
 
   // ---- Music Playlist ----
