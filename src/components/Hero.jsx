@@ -142,12 +142,17 @@ const Hero = () => {
         </motion.div>
 
         {/* Sidebar widgets */}
-        <motion.div variants={item} className="col-span-1 md:col-span-4 lg:col-span-3 row-span-1">
-          <StatusWidget />
-        </motion.div>
+        <motion.div
+          variants={item}
+          className="col-span-1 md:col-span-4 lg:col-span-3 row-span-3 flex flex-col gap-3 h-full"
+        >
+          <div className="flex-[0.7] min-h-0">
+            <StatusWidget />
+          </div>
 
-        <motion.div variants={item} className="col-span-1 md:col-span-4 lg:col-span-3 row-span-1">
-          <EducationWidget />
+          <div className="flex-[1.3] min-h-0">
+            <EducationWidget />
+          </div>
         </motion.div>
 
         {/* <motion.div variants={item} className="col-span-1 md:col-span-4 lg:col-span-3 row-span-1">

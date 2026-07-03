@@ -29,8 +29,8 @@ const StatusWidget = () => {
   }, [])
 
   return (
-    <div className="glass-card p-3 h-full flex flex-col justify-center">
-      <div className="flex flex-col gap-1.5">
+    <div className="glass-card p-4 h-full flex flex-col justify-center">
+      <div className="flex flex-col gap-0.5">
         <div className="flex items-center gap-2">
           <span className="relative flex h-3 w-3">
             {isAway ? (
@@ -49,8 +49,8 @@ const StatusWidget = () => {
 
         <div className="flex items-baseline flex-wrap gap-x-2 gap-y-1 mt-1">
           <div className="flex items-center gap-2 theme-text-sub">
-            <FaClock className="text-lg md:text-xl" />
-            <span className="text-xl md:text-2xl font-display font-bold" style={{ fontVariantNumeric: 'tabular-nums' }}>{time}</span>
+            <FaClock className="text-sm md:text-base" />
+            <span className="text-base md:text-lg font-display font-bold leading-none" style={{ fontVariantNumeric: 'tabular-nums' }}>{time}</span>
           </div>
           <span className="text-[10px] theme-text-muted font-sans uppercase" style={{ letterSpacing: '0.12em' }}>IST (India)</span>
         </div>
