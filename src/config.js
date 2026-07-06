@@ -106,30 +106,27 @@ export const config = {
       tags: ['Python', 'Time Series', 'Pandas', 'Forecasting'],
       gradient: 'from-emerald-500 to-teal-500',
       images: [
-        'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?w=800&q=80',
-        'https://images.unsplash.com/photo-1607748851687-ba9a10438621?w=800&q=80',
+        'assets/projects/2/1.png',
       ]
     },
     {
       title: 'Automated Waste Segregation Using Manipulator',
-      description: 'Analytics dashboard for automated waste segregation using a manipulator-based detection and control workflow.',
+      description: 'Automated waste segregation using a manipulator-based detection and control workflow.',
       icon: 'FaChartLine',
       tags: ['Analytics', 'Automation', 'Computer Vision', 'Manipulator'],
       gradient: 'from-lime-500 to-green-500',
       images: [
-        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+        'assets/projects/3/1.png',
       ]
     },
     {
       title: 'RFID Assisted Vehicle Speed Monitoring & Classification',
-      description: 'Chatbot system for RFID-assisted vehicle speed monitoring and classification with AI-driven insights.',
+      description: 'RFID-assisted vehicle speed monitoring and classification.',
       icon: 'FaRobot',
       tags: ['Python', 'RFID', 'Classification'],
       gradient: 'from-teal-500 to-cyan-500',
       images: [
-        'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80',
-        'https://images.unsplash.com/photo-1599839619722-39751411ea63?w=800&q=80',
+        'assets/projects/4/1.png',
       ]
     },
   ],
