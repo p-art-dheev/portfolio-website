@@ -100,10 +100,10 @@ export const config = {
       ]
     },
     {
-      title: 'Task Management App',
-      description: 'Intuitive task manager with real-time collaboration',
+      title: 'Electricity Load Forecasting',
+      description: 'Time series analysis project for predicting electricity demand with Python and forecasting techniques.',
       icon: 'FaMobileAlt',
-      tags: ['Vue.js', 'Firebase', 'Tailwind'],
+      tags: ['Python', 'Time Series', 'Pandas', 'Forecasting'],
       gradient: 'from-emerald-500 to-teal-500',
       images: [
         'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?w=800&q=80',
@@ -111,10 +111,10 @@ export const config = {
       ]
     },
     {
-      title: 'Analytics Dashboard',
-      description: 'Real-time data visualization and reporting tool',
+      title: 'Automated Waste Segregation Using Manipulator',
+      description: 'Analytics dashboard for automated waste segregation using a manipulator-based detection and control workflow.',
       icon: 'FaChartLine',
-      tags: ['React', 'D3.js', 'Express'],
+      tags: ['Analytics', 'Automation', 'Computer Vision', 'Manipulator'],
       gradient: 'from-lime-500 to-green-500',
       images: [
         'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
@@ -122,10 +122,10 @@ export const config = {
       ]
     },
     {
-      title: 'AI Chatbot',
-      description: 'ML-powered conversational assistant',
+      title: 'RFID Assisted Vehicle Speed Monitoring & Classification',
+      description: 'Chatbot system for RFID-assisted vehicle speed monitoring and classification with AI-driven insights.',
       icon: 'FaRobot',
-      tags: ['Python', 'TensorFlow', 'FastAPI'],
+      tags: ['Python', 'RFID', 'Classification'],
       gradient: 'from-teal-500 to-cyan-500',
       images: [
         'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80',
