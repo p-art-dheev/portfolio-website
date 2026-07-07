@@ -53,15 +53,21 @@ const Projects = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: featured ? 0 : index * 0.1 }}
-        className={`group relative rounded-2xl border theme-border overflow-hidden hover:border-primary-500/50 transition-all duration-300 flex flex-col h-full ${featured ? 'w-full md:flex-row md:min-h-[18rem]' : ''}`}
+        className={`group relative rounded-2xl border overflow-hidden transition-all duration-300 flex flex-col h-full ${
+          featured 
+            ? 'w-full md:flex-row md:min-h-[3.8rem] border-[#077DE6]/40 shadow-[0_0_20px_rgba(7,125,230,0.12)] hover:border-[#077DE6]/70 hover:shadow-[0_0_30px_rgba(7,125,230,0.22)]' 
+            : 'theme-border hover:border-primary-500/50'
+        }`}
         style={{
-          background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)',
+          background: featured 
+            ? 'linear-gradient(135deg, rgba(7,125,230,0.06) 0%, rgba(7,125,230,0.01) 100%)' 
+            : 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)',
         }}
       >
         {/* Image Cover Section */}
         {hasImages ? (
           <div
-            className={`relative w-full overflow-hidden cursor-pointer group/image ${featured ? 'h-52 md:h-auto md:w-[42%] md:order-2' : 'h-48 md:h-56'}`}
+            className={`relative w-full overflow-hidden cursor-pointer group/image ${featured ? 'h-32 md:h-auto md:w-[30%] md:order-2' : 'h-36 md:h-40'}`}
             onClick={() => openGallery(project)}
           >
             <img
@@ -70,64 +76,70 @@ const Projects = () => {
               className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-105"
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-              <span className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-full backdrop-blur-md font-medium text-sm transition-colors flex items-center gap-2 border border-white/30 shadow-xl">
+              <span className="px-3 py-1 bg-white/20 hover:bg-white/30 text-white rounded-full backdrop-blur-md font-medium text-[10px] transition-colors flex items-center gap-1 border border-white/30 shadow-xl">
                 <FaImages /> View Gallery ({project.images.length})
               </span>
             </div>
           </div>
         ) : (
-          <div className={`relative w-full flex items-center justify-center bg-gradient-to-br ${project.gradient} opacity-80 overflow-hidden ${featured ? 'h-52 md:h-auto md:w-[42%] md:order-2' : 'h-48 md:h-56'}`}>
+          <div className={`relative w-full flex items-center justify-center bg-gradient-to-br ${project.gradient} opacity-80 overflow-hidden ${featured ? 'h-32 md:h-auto md:w-[30%] md:order-2' : 'h-36 md:h-40'}`}>
             <div className="absolute inset-0 bg-black/20" />
-            {Icon && <Icon className={`${featured ? 'text-7xl md:text-8xl' : 'text-6xl'} text-white opacity-80 z-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-500`} />}
+            {Icon && <Icon className={`${featured ? 'text-5xl md:text-6xl' : 'text-5xl'} text-white opacity-80 z-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-500`} />}
           </div>
         )}
 
         {/* Content Section */}
-        <div className={`p-6 flex-1 flex flex-col relative z-10 theme-surface bg-opacity-50 ${featured ? 'md:p-8 md:w-[58%] md:order-1 md:justify-center' : ''}`}>
+        <div className={`p-4 md:p-5 flex-1 flex flex-col justify-center relative z-10 theme-surface bg-opacity-50 ${featured ? 'md:p-4 md:w-[70%] md:order-1' : ''}`}>
           {/* Icon (only if no images) */}
           {!hasImages && !featured && (
-            <div className="mb-4">
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 -mt-12 border-[3px] border-[#13131a] relative z-20`}>
-                {Icon && <Icon className="text-xl text-white" />}
+            <div className="mb-3">
+              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 -mt-9 border-[3px] border-[#13131a] relative z-20`}>
+                {Icon && <Icon className="text-lg text-white" />}
               </div>
             </div>
           )}
 
-          {featured && project.status?.label && (
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 rounded-full border border-primary-500/20 bg-primary-500/10 text-primary-500 text-[11px] font-semibold uppercase tracking-[0.18em] w-fit">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500" />
-              </span>
-              {project.status.label}
-            </div>
-          )}
+          {/* Title & Status Badge inline */}
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
+            <h3 className={`text-lg font-display font-bold transition-colors ${hasImages && !featured ? 'mt-1' : ''} ${featured ? 'md:text-xl text-[#077DE6] font-extrabold group-hover:text-[#3ba2ff]' : 'group-hover:text-primary-500'}`}>
+              {project.title}
+            </h3>
 
-          {/* Title & Description */}
-          <h3 className={`text-xl font-display font-bold mb-2 group-hover:text-primary-500 transition-colors ${hasImages ? 'mt-2' : ''} ${featured ? 'md:text-3xl' : ''}`}>
-            {project.title}
-          </h3>
+            {featured && project.status?.label && (
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-[#077DE6]/30 bg-[#077DE6]/10 text-[#077DE6] text-[9px] font-bold uppercase tracking-[0.15em] w-fit shadow-[0_0_12px_rgba(7,125,230,0.2)] animate-pulse">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#077DE6] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#077DE6]" />
+                </span>
+                <span className="ml-1">{project.status.label}</span>
+              </div>
+            )}
 
-          {!featured && project.status?.label && (
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 rounded-full border border-primary-500/20 bg-primary-500/10 text-primary-500 text-[11px] font-semibold uppercase tracking-[0.18em] w-fit">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500" />
-              </span>
-              {project.status.label}
-            </div>
-          )}
+            {!featured && project.status?.label && (
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-primary-500/20 bg-primary-500/10 text-primary-500 text-[10px] font-semibold uppercase tracking-[0.15em] w-fit">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500" />
+                </span>
+                {project.status.label}
+              </div>
+            )}
+          </div>
 
-          <p className={`theme-text-sub text-sm mb-5 leading-relaxed flex-1 ${featured ? 'md:text-base md:max-w-xl' : ''}`}>
+          <p className={`theme-text-sub text-sm mb-3 leading-relaxed flex-1 ${featured ? 'md:text-sm md:max-w-xl' : ''}`}>
             {project.description}
           </p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-5">
+          <div className="flex flex-wrap gap-1.5 mb-3">
             {project.tags.map((tag, i) => (
               <span
                 key={i}
-                className="px-2.5 py-1 theme-surface rounded-md text-[11px] text-primary-500 font-mono border border-primary-500/20 group-hover:border-primary-500/40 transition-colors"
+                className={`px-2 py-0.5 theme-surface rounded-md text-[10px] font-mono border transition-colors ${
+                  featured 
+                    ? 'text-[#077DE6] border-[#077DE6]/20 group-hover:border-[#077DE6]/40' 
+                    : 'text-primary-500 border-primary-500/20 group-hover:border-primary-500/40'
+                }`}
               >
                 {tag}
               </span>
@@ -135,15 +147,15 @@ const Projects = () => {
           </div>
 
           {/* Action buttons */}
-          <div className="flex gap-4 pt-4 border-t theme-border mt-auto">
+          <div className="flex gap-4 pt-3 border-t theme-border mt-auto">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
+                className="flex items-center gap-2 text-xs theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
               >
-                <FaExternalLinkAlt className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform text-xs" />
+                <FaExternalLinkAlt className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform text-[10px]" />
                 Live Demo
               </a>
             )}
@@ -152,7 +164,7 @@ const Projects = () => {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
+                className="flex items-center gap-2 text-xs theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
               >
                 <FaGithub className="group-hover/link:-translate-y-0.5 transition-transform text-xs" />
                 Source Code
