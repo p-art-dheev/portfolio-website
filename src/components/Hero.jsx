@@ -8,8 +8,7 @@ import { config } from '../config'
 
 const GREETINGS = [
   'Hi', 'Hola', 'नमस्ते', 'Bonjour', 'Ciao',
-  'Olá', 'こんにちは', '안녕', 'வணக்கம்',
-  'مرحبا', 'Привет',
+  'Olá',
 ]
 
 const Hero = () => {

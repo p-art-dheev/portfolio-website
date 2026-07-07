@@ -172,14 +172,6 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
           >
             @{username}
           </a>
-          <a
-            href={apiUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-2 text-xs text-primary-400/80 hover:text-primary-300 transition-colors"
-          >
-            Open API
-          </a>
           {fetchError && (
             <div className="w-full text-xs text-red-400 mt-2">API error: {fetchError}</div>
           )}

@@ -2,12 +2,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 import {
-  FaLaptopCode, FaMobileAlt, FaChartLine, FaRobot,
+  FaLaptopCode, FaMobileAlt, FaChartLine, FaRobot, FaBrain,
   FaExternalLinkAlt, FaGithub, FaTimes, FaChevronLeft, FaChevronRight, FaImages
 } from 'react-icons/fa'
 import { config } from '../config'
 
-const ICON_MAP = { FaLaptopCode, FaMobileAlt, FaChartLine, FaRobot }
+const ICON_MAP = { FaLaptopCode, FaMobileAlt, FaChartLine, FaRobot, FaBrain }
 
 const Projects = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -40,6 +40,130 @@ const Projects = () => {
     setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length)
   }
 
+  const featuredProject = config.projects.find((project) => project.status?.label)
+  const otherProjects = config.projects.filter((project) => project !== featuredProject)
+
+  const renderProjectCard = (project, index, featured = false) => {
+    const Icon = ICON_MAP[project.icon]
+    const hasImages = project.images && project.images.length > 0
+
+    return (
+      <motion.div
+        key={project.title}
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: featured ? 0 : index * 0.1 }}
+        className={`group relative rounded-2xl border theme-border overflow-hidden hover:border-primary-500/50 transition-all duration-300 flex flex-col h-full ${featured ? 'w-full md:flex-row md:min-h-[18rem]' : ''}`}
+        style={{
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)',
+        }}
+      >
+        {/* Image Cover Section */}
+        {hasImages ? (
+          <div
+            className={`relative w-full overflow-hidden cursor-pointer group/image ${featured ? 'h-52 md:h-auto md:w-[42%] md:order-2' : 'h-48 md:h-56'}`}
+            onClick={() => openGallery(project)}
+          >
+            <img
+              src={project.images[0]}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+              <span className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-full backdrop-blur-md font-medium text-sm transition-colors flex items-center gap-2 border border-white/30 shadow-xl">
+                <FaImages /> View Gallery ({project.images.length})
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div className={`relative w-full flex items-center justify-center bg-gradient-to-br ${project.gradient} opacity-80 overflow-hidden ${featured ? 'h-52 md:h-auto md:w-[42%] md:order-2' : 'h-48 md:h-56'}`}>
+            <div className="absolute inset-0 bg-black/20" />
+            {Icon && <Icon className={`${featured ? 'text-7xl md:text-8xl' : 'text-6xl'} text-white opacity-80 z-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-500`} />}
+          </div>
+        )}
+
+        {/* Content Section */}
+        <div className={`p-6 flex-1 flex flex-col relative z-10 theme-surface bg-opacity-50 ${featured ? 'md:p-8 md:w-[58%] md:order-1 md:justify-center' : ''}`}>
+          {/* Icon (only if no images) */}
+          {!hasImages && !featured && (
+            <div className="mb-4">
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 -mt-12 border-[3px] border-[#13131a] relative z-20`}>
+                {Icon && <Icon className="text-xl text-white" />}
+              </div>
+            </div>
+          )}
+
+          {featured && project.status?.label && (
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 rounded-full border border-primary-500/20 bg-primary-500/10 text-primary-500 text-[11px] font-semibold uppercase tracking-[0.18em] w-fit">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500" />
+              </span>
+              {project.status.label}
+            </div>
+          )}
+
+          {/* Title & Description */}
+          <h3 className={`text-xl font-display font-bold mb-2 group-hover:text-primary-500 transition-colors ${hasImages ? 'mt-2' : ''} ${featured ? 'md:text-3xl' : ''}`}>
+            {project.title}
+          </h3>
+
+          {!featured && project.status?.label && (
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 rounded-full border border-primary-500/20 bg-primary-500/10 text-primary-500 text-[11px] font-semibold uppercase tracking-[0.18em] w-fit">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500" />
+              </span>
+              {project.status.label}
+            </div>
+          )}
+
+          <p className={`theme-text-sub text-sm mb-5 leading-relaxed flex-1 ${featured ? 'md:text-base md:max-w-xl' : ''}`}>
+            {project.description}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-5">
+            {project.tags.map((tag, i) => (
+              <span
+                key={i}
+                className="px-2.5 py-1 theme-surface rounded-md text-[11px] text-primary-500 font-mono border border-primary-500/20 group-hover:border-primary-500/40 transition-colors"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex gap-4 pt-4 border-t theme-border mt-auto">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
+              >
+                <FaExternalLinkAlt className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform text-xs" />
+                Live Demo
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
+              >
+                <FaGithub className="group-hover/link:-translate-y-0.5 transition-transform text-xs" />
+                Source Code
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    )
+  }
+
   return (
     <section id="projects">
       <motion.div
@@ -51,107 +175,12 @@ const Projects = () => {
       >
         <h2 className="text-xl md:text-2xl font-display font-extrabold mb-8 text-center" style={{ letterSpacing: '-0.02em' }}>Projects</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {config.projects.map((project, index) => {
-            const Icon = ICON_MAP[project.icon]
-            const hasImages = project.images && project.images.length > 0
+        <div className="flex flex-col gap-6">
+          {featuredProject && renderProjectCard(featuredProject, 0, true)}
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1 }}
-                className="group relative rounded-2xl border theme-border overflow-hidden hover:border-primary-500/50 transition-all duration-300 flex flex-col h-full"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)',
-                }}
-              >
-                {/* Image Cover Section */}
-                {hasImages ? (
-                  <div
-                    className="relative w-full h-48 md:h-56 overflow-hidden cursor-pointer group/image"
-                    onClick={() => openGallery(project)}
-                  >
-                    <img
-                      src={project.images[0]}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                      <span className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-full backdrop-blur-md font-medium text-sm transition-colors flex items-center gap-2 border border-white/30 shadow-xl">
-                        <FaImages /> View Gallery ({project.images.length})
-                      </span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className={`relative w-full h-48 md:h-56 flex items-center justify-center bg-gradient-to-br ${project.gradient} opacity-80 overflow-hidden`}>
-                    <div className="absolute inset-0 bg-black/20" />
-                    {Icon && <Icon className="text-6xl text-white opacity-80 z-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-500" />}
-                  </div>
-                )}
-
-                {/* Content Section */}
-                <div className="p-6 flex-1 flex flex-col relative z-10 theme-surface bg-opacity-50">
-                  {/* Icon (only if no images) */}
-                  {!hasImages && (
-                    <div className="mb-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 -mt-12 border-[3px] border-[#13131a] relative z-20`}>
-                        {Icon && <Icon className="text-xl text-white" />}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Title & Description */}
-                  <h3 className={`text-xl font-display font-bold mb-2 group-hover:text-primary-500 transition-colors ${hasImages ? 'mt-2' : ''}`}>
-                    {project.title}
-                  </h3>
-
-                  <p className="theme-text-sub text-sm mb-5 leading-relaxed flex-1">
-                    {project.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {project.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-2.5 py-1 theme-surface rounded-md text-[11px] text-primary-500 font-mono border border-primary-500/20 group-hover:border-primary-500/40 transition-colors"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action buttons */}
-                  <div className="flex gap-4 pt-4 border-t theme-border mt-auto">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
-                      >
-                        <FaExternalLinkAlt className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform text-xs" />
-                        Live Demo
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm theme-text-sub hover:text-primary-500 transition-colors group/link font-medium"
-                      >
-                        <FaGithub className="group-hover/link:-translate-y-0.5 transition-transform text-xs" />
-                        Source Code
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {otherProjects.map((project, index) => renderProjectCard(project, index))}
+          </div>
         </div>
       </motion.div>
 

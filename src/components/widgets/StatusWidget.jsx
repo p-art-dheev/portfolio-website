@@ -47,12 +47,12 @@ const StatusWidget = () => {
           </span>
         </div>
 
-        <div className="flex items-baseline flex-wrap gap-x-2 gap-y-1 mt-1">
-          <div className="flex items-center gap-2 theme-text-sub">
+        <div className="flex items-center flex-wrap gap-x-2 gap-y-1 mt-1">
+          <div className="flex items-center gap-2 theme-text-sub leading-none">
             <FaClock className="text-sm md:text-base" />
             <span className="text-base md:text-lg font-display font-bold leading-none" style={{ fontVariantNumeric: 'tabular-nums' }}>{time}</span>
           </div>
-          <span className="text-[10px] theme-text-muted font-sans uppercase" style={{ letterSpacing: '0.12em' }}>IST (India)</span>
+          <span className="text-[10px] theme-text-muted font-sans uppercase leading-none self-center" style={{ letterSpacing: '0.12em' }}>IST (India)</span>
         </div>
       </div>
     </div>

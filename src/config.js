@@ -129,6 +129,19 @@ export const config = {
         'assets/projects/4/1.png',
       ]
     },
+    {
+      title: 'Graph Memory Agents',
+      description: 'An in-progress agent system for graph-backed memory, retrieval, and reasoning workflows.',
+      icon: 'FaBrain',
+      tags: ['AI Agents', 'Graphs', 'Memory', 'Retrieval'],
+      gradient: 'from-fuchsia-500 to-violet-500',
+      images: [
+        'assets/projects/CurrentlyBuilding/1.png',
+      ],
+      status: {
+        label: 'Currently building',
+      },
+    },
   ],
 
   // ---- Quotes (rotated in the hero section) ----
