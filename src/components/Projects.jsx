@@ -53,21 +53,21 @@ const Projects = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: featured ? 0 : index * 0.1 }}
-        className={`group relative rounded-2xl border overflow-hidden transition-all duration-300 flex flex-col h-full ${
+        className={`group relative rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
           featured 
-            ? 'w-full md:flex-row md:min-h-[3.8rem] border-[#077DE6]/40 shadow-[0_0_20px_rgba(7,125,230,0.12)] hover:border-[#077DE6]/70 hover:shadow-[0_0_30px_rgba(7,125,230,0.22)]' 
-            : 'theme-border hover:border-primary-500/50'
+            ? 'w-full md:flex-row border-2 border-[#077DE6]/60 shadow-[0_0_28px_rgba(7,125,230,0.25),0_0_60px_rgba(7,125,230,0.10)] hover:border-[#077DE6] hover:shadow-[0_0_40px_rgba(7,125,230,0.45),0_0_80px_rgba(7,125,230,0.18)]' 
+            : 'border theme-border hover:border-primary-500/50'
         }`}
         style={{
           background: featured 
-            ? 'linear-gradient(135deg, rgba(7,125,230,0.06) 0%, rgba(7,125,230,0.01) 100%)' 
+            ? 'linear-gradient(135deg, rgba(7,125,230,0.08) 0%, rgba(7,125,230,0.02) 100%)' 
             : 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)',
         }}
       >
         {/* Image Cover Section */}
         {hasImages ? (
           <div
-            className={`relative w-full overflow-hidden cursor-pointer group/image ${featured ? 'h-32 md:h-auto md:w-[30%] md:order-2' : 'h-36 md:h-40'}`}
+            className={`relative w-full overflow-hidden cursor-pointer group/image ${featured ? 'h-24 md:h-auto md:w-[28%] md:order-2' : 'h-36 md:h-40'}`}
             onClick={() => openGallery(project)}
           >
             <img
@@ -82,14 +82,14 @@ const Projects = () => {
             </div>
           </div>
         ) : (
-          <div className={`relative w-full flex items-center justify-center bg-gradient-to-br ${project.gradient} opacity-80 overflow-hidden ${featured ? 'h-32 md:h-auto md:w-[30%] md:order-2' : 'h-36 md:h-40'}`}>
+          <div className={`relative w-full flex items-center justify-center bg-gradient-to-br ${project.gradient} opacity-80 overflow-hidden ${featured ? 'h-24 md:h-auto md:w-[28%] md:order-2' : 'h-36 md:h-40'}`}>
             <div className="absolute inset-0 bg-black/20" />
             {Icon && <Icon className={`${featured ? 'text-5xl md:text-6xl' : 'text-5xl'} text-white opacity-80 z-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-500`} />}
           </div>
         )}
 
         {/* Content Section */}
-        <div className={`p-4 md:p-5 flex-1 flex flex-col justify-center relative z-10 theme-surface bg-opacity-50 ${featured ? 'md:p-4 md:w-[70%] md:order-1' : ''}`}>
+        <div className={`p-3 md:p-4 flex-1 flex flex-col justify-center relative z-10 theme-surface bg-opacity-50 ${featured ? 'md:p-4 md:w-[72%] md:order-1' : ''}`}>
           {/* Icon (only if no images) */}
           {!hasImages && !featured && (
             <div className="mb-3">
@@ -101,17 +101,17 @@ const Projects = () => {
 
           {/* Title & Status Badge inline */}
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
-            <h3 className={`text-lg font-display font-bold transition-colors ${hasImages && !featured ? 'mt-1' : ''} ${featured ? 'md:text-xl text-[#077DE6] font-extrabold group-hover:text-[#3ba2ff]' : 'group-hover:text-primary-500'}`}>
+            <h3 className={`font-display transition-colors ${hasImages && !featured ? 'mt-1' : ''} ${featured ? 'text-xl md:text-2xl text-[#077DE6] font-black tracking-tight group-hover:text-[#3ba2ff]' : 'text-lg font-bold group-hover:text-primary-500'}`}>
               {project.title}
             </h3>
 
             {featured && project.status?.label && (
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-[#077DE6]/30 bg-[#077DE6]/10 text-[#077DE6] text-[9px] font-bold uppercase tracking-[0.15em] w-fit shadow-[0_0_12px_rgba(7,125,230,0.2)] animate-pulse">
-                <span className="relative flex h-1.5 w-1.5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border-2 border-[#077DE6]/50 bg-[#077DE6]/15 text-[#077DE6] text-[11px] font-bold uppercase tracking-[0.18em] w-fit shadow-[0_0_16px_rgba(7,125,230,0.35)]">
+                <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#077DE6] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#077DE6]" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#077DE6]" />
                 </span>
-                <span className="ml-1">{project.status.label}</span>
+                <span>{project.status.label}</span>
               </div>
             )}
 
@@ -126,12 +126,12 @@ const Projects = () => {
             )}
           </div>
 
-          <p className={`theme-text-sub text-sm mb-3 leading-relaxed flex-1 ${featured ? 'md:text-sm md:max-w-xl' : ''}`}>
+          <p className={`theme-text-sub mb-2 leading-relaxed flex-1 ${featured ? 'text-xs md:text-sm md:max-w-xl' : 'text-sm'}`}>
             {project.description}
           </p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-1.5 mb-3">
+          <div className="flex flex-wrap gap-1.5 mb-2">
             {project.tags.map((tag, i) => (
               <span
                 key={i}
@@ -147,7 +147,7 @@ const Projects = () => {
           </div>
 
           {/* Action buttons */}
-          <div className="flex gap-4 pt-3 border-t theme-border mt-auto">
+          <div className="flex gap-4 pt-2 border-t theme-border mt-auto">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
