@@ -180,24 +180,23 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
 
       <div>
         <div className="relative mb-4">
-          <div className="absolute left-0 top-0 bottom-0 grid grid-rows-7 gap-[4px] text-xs text-muted" style={{ width: 36 }}>
+          <div className="absolute left-0 top-0 bottom-0 grid grid-rows-7 gap-[3px] text-xs text-muted" style={{ width: 36 }}>
             {Array.from({ length: 7 }).map((_, idx) => (
-              <div key={idx} className="h-3 flex items-center">
+              <div key={idx} className="h-[13px] flex items-center">
                 {idx === 1 ? 'Mon' : idx === 3 ? 'Wed' : idx === 5 ? 'Fri' : ''}
               </div>
             ))}
           </div>
 
-          <div className="pl-10 overflow-x-auto pb-2">
+          <div className="pl-10 overflow-x-auto pb-3">
             <div
-              className=""
+              className="w-max"
               style={{
                 display: 'grid',
                 gridAutoFlow: 'column',
-                gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
-                gridAutoColumns: 'minmax(0, 1fr)',
-                columnGap: '3px',
-                rowGap: '3px'
+                gridTemplateRows: 'repeat(7, 13px)',
+                gridAutoColumns: '13px',
+                gap: '3px'
               }}
             >
               {contributions.map((day, i) => (

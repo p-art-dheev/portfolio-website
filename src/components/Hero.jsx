@@ -41,9 +41,9 @@ const Hero = () => {
         {/* Main Hero Card */}
         <motion.div
           variants={item}
-          className="glass-card col-span-1 md:col-span-8 lg:col-span-7 row-span-3 p-5 md:p-6 flex items-center gap-5"
+          className="glass-card col-span-1 md:col-span-8 lg:col-span-7 row-span-3 p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-6"
         >
-          <div className="flex-1">
+          <div className="flex-1 w-full sm:w-auto">
             {/* Greeting */}
             <div className="h-6 md:h-7 mb-2 flex items-center">
               <AnimatePresence mode="wait">
@@ -74,13 +74,18 @@ const Hero = () => {
               </p>
             </div>
 
+            {/* Inline Status Indicator for Mobile */}
+            <div className="md:hidden mb-3">
+              <StatusWidget inline={true} />
+            </div>
+
             {/* Role */}
             <p className="text-sm md:text-base font-sans font-medium theme-text-sub opacity-70 mb-5">
               {config.personal.title}
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -108,9 +113,9 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Profile Picture */}
+          {/* Profile Picture (Visible on Mobile & Desktop) */}
           <motion.div
-            className="hidden md:flex w-32 h-32 lg:w-48 lg:h-48 relative flex-shrink-0 group cursor-pointer"
+            className="flex w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-48 lg:h-48 relative flex-shrink-0 group cursor-pointer"
           >
             {/* Outer Pulsing Glow */}
             <div className="absolute -inset-4 rounded-full bg-primary-500/10 blur-xl animate-pulse transition-all duration-500" />
@@ -144,7 +149,7 @@ const Hero = () => {
           variants={item}
           className="col-span-1 md:col-span-4 lg:col-span-3 row-span-3 flex flex-col gap-3 h-full"
         >
-          <div className="flex-[0.7] min-h-0">
+          <div className="hidden md:block flex-[0.7] min-h-0">
             <StatusWidget />
           </div>
 
