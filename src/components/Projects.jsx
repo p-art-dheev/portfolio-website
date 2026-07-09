@@ -53,10 +53,10 @@ const Projects = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: featured ? 0 : index * 0.1 }}
-        className={`group relative rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
+        className={`group relative rounded-3xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
           featured 
             ? 'w-full md:flex-row border-2 border-[#077DE6]/60 shadow-[0_0_28px_rgba(7,125,230,0.25),0_0_60px_rgba(7,125,230,0.10)] hover:border-[#077DE6] hover:shadow-[0_0_40px_rgba(7,125,230,0.45),0_0_80px_rgba(7,125,230,0.18)]' 
-            : 'border theme-border hover:border-primary-500/50'
+            : 'border border-white/12 hover:border-primary-500/50 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]'
         }`}
         style={{
           background: featured 
@@ -73,7 +73,7 @@ const Projects = () => {
             <img
               src={project.images[0]}
               alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-105"
+              className="w-full h-full object-cover rounded-[inherit] transition-transform duration-700 group-hover/image:scale-105"
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
               <span className="px-3 py-1 bg-white/20 hover:bg-white/30 text-white rounded-full backdrop-blur-md font-medium text-[10px] transition-colors flex items-center gap-1 border border-white/30 shadow-xl">
@@ -89,7 +89,7 @@ const Projects = () => {
         )}
 
         {/* Content Section */}
-        <div className={`p-3 md:p-4 flex-1 flex flex-col justify-center relative z-10 theme-surface bg-opacity-50 ${featured ? 'md:p-4 md:w-[72%] md:order-1' : ''}`}>
+        <div className={`p-3 md:p-4 flex-1 flex flex-col justify-center relative z-10 theme-surface bg-opacity-50 ${featured ? 'md:p-6 md:w-[72%] md:order-1' : ''}`}>
           {/* Icon (only if no images) */}
           {!hasImages && !featured && (
             <div className="mb-3">
@@ -101,7 +101,7 @@ const Projects = () => {
 
           {/* Title & Status Badge inline */}
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
-            <h3 className={`font-display transition-colors ${hasImages && !featured ? 'mt-1' : ''} ${featured ? 'text-xl md:text-2xl text-[#077DE6] font-black tracking-tight group-hover:text-[#3ba2ff]' : 'text-lg font-bold group-hover:text-primary-500'}`}>
+            <h3 className={`font-display transition-colors ${hasImages && !featured ? 'mt-1' : ''} ${featured ? 'text-2xl md:text-3xl text-[#077DE6] font-black tracking-tight group-hover:text-[#3ba2ff]' : 'text-lg font-bold group-hover:text-primary-500'}`}>
               {project.title}
             </h3>
 
@@ -126,18 +126,18 @@ const Projects = () => {
             )}
           </div>
 
-          <p className={`theme-text-sub mb-2 leading-relaxed flex-1 ${featured ? 'text-xs md:text-sm md:max-w-xl' : 'text-sm'}`}>
+          <p className={`theme-text-sub mb-2 leading-relaxed flex-1 ${featured ? 'text-sm md:text-base md:max-w-xl' : 'text-sm'}`}>
             {project.description}
           </p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-1.5 mb-2">
+          <div className={`flex flex-wrap gap-1.5 mb-2 ${featured ? 'gap-2 mb-3' : ''}`}>
             {project.tags.map((tag, i) => (
               <span
                 key={i}
                 className={`px-2 py-0.5 theme-surface rounded-md text-[10px] font-mono border transition-colors ${
                   featured 
-                    ? 'text-[#077DE6] border-[#077DE6]/20 group-hover:border-[#077DE6]/40' 
+                    ? 'px-2.5 py-1 text-sm md:text-[0.95rem] text-[#077DE6] border-[#077DE6]/20 group-hover:border-[#077DE6]/40' 
                     : 'text-primary-500 border-primary-500/20 group-hover:border-primary-500/40'
                 }`}
               >
