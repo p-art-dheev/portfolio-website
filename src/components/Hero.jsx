@@ -30,6 +30,35 @@ const Hero = () => {
     show: { opacity: 1, y: 0 },
   }
 
+  const renderProfilePicture = (sizeClass) => (
+    <div className={`${sizeClass} relative flex-shrink-0 group cursor-pointer`}>
+      {/* Outer Pulsing Glow */}
+      <div className="absolute -inset-4 rounded-full bg-primary-500/10 blur-xl animate-pulse transition-all duration-500" />
+
+      {/* Pulsating Inner Ring */}
+      <div className="absolute -inset-1 rounded-full border-[3px] border-primary-500/40 animate-pulse transition-all duration-300" />
+
+      {/* Soft Glow effect behind image */}
+      <div className="absolute inset-0 rounded-full bg-primary-500/10 blur-md transition-all duration-500" />
+
+      {/* Main Image Container */}
+      <div className="absolute inset-0 rounded-full border-[3px] border-primary-500/30 overflow-hidden shadow-[0_0_20px_rgba(var(--color-primary-500),0.3)] bg-[#13131a] z-10 transition-all duration-500">
+        {config.personal.profileImage ? (
+          <img
+            src={config.personal.profileImage}
+            alt={config.personal.name}
+            className="block w-full h-full object-cover"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+            <FaUser className="text-5xl lg:text-6xl text-white/90 absolute inset-0 m-auto flex items-center justify-center z-10" />
+          </>
+        )}
+      </div>
+    </div>
+  )
+
   return (
     <section id="home" className="py-2 flex items-center">
       <motion.div
@@ -41,9 +70,9 @@ const Hero = () => {
         {/* Main Hero Card */}
         <motion.div
           variants={item}
-          className="glass-card col-span-1 md:col-span-8 lg:col-span-7 row-span-3 p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-6"
+          className="glass-card col-span-1 md:col-span-8 lg:col-span-7 row-span-3 p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6"
         >
-          <div className="flex-1 w-full sm:w-auto">
+          <div className="flex-1 w-full md:w-auto">
             {/* Greeting */}
             <div className="h-6 md:h-7 mb-2 flex items-center">
               <AnimatePresence mode="wait">
@@ -84,6 +113,11 @@ const Hero = () => {
               {config.personal.title}
             </p>
 
+            {/* Profile Picture on Mobile — Always BEFORE buttons */}
+            <div className="flex md:hidden justify-center sm:justify-start mb-6">
+              {renderProfilePicture("w-36 h-36 sm:w-44 sm:h-44")}
+            </div>
+
             {/* Buttons */}
             <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
               <motion.button
@@ -113,34 +147,9 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Profile Picture (Visible on Mobile & Desktop) */}
-          <motion.div
-            className="flex w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-48 lg:h-48 relative flex-shrink-0 group cursor-pointer"
-          >
-            {/* Outer Pulsing Glow */}
-            <div className="absolute -inset-4 rounded-full bg-primary-500/10 blur-xl animate-pulse transition-all duration-500" />
-
-            {/* Pulsating Inner Ring */}
-            <div className="absolute -inset-1 rounded-full border-[3px] border-primary-500/40 animate-pulse transition-all duration-300" />
-
-            {/* Soft Glow effect behind image */}
-            <div className="absolute inset-0 rounded-full bg-primary-500/10 blur-md transition-all duration-500" />
-
-            {/* Main Image Container */}
-            <div className="absolute inset-0 rounded-full border-[3px] border-primary-500/30 overflow-hidden shadow-[0_0_20px_rgba(var(--color-primary-500),0.3)] bg-[#13131a] z-10 transition-all duration-500">
-              {config.personal.profileImage ? (
-                <img
-                  src={config.personal.profileImage}
-                  alt={config.personal.name}
-                  className="block w-full h-full object-cover"
-                />
-              ) : (
-                <>
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-                  <FaUser className="text-5xl lg:text-6xl text-white/90 absolute inset-0 m-auto flex items-center justify-center z-10" />
-                </>
-              )}
-            </div>
+          {/* Profile Picture on Desktop */}
+          <motion.div className="hidden md:flex">
+            {renderProfilePicture("w-44 h-44 lg:w-56 lg:h-56")}
           </motion.div>
         </motion.div>
 

@@ -19,9 +19,9 @@ const About = () => {
         {/* About Card */}
         <div className="glass-card p-6 md:p-8">
           <h2 className="text-xl md:text-2xl font-display font-extrabold mb-8 text-center" style={{ letterSpacing: '-0.02em' }}>About Me</h2>
-          <div className="space-y-3 text-sm md:text-base theme-text-sub leading-relaxed font-sans">
+          <div className="space-y-4 text-sm md:text-base theme-text-sub leading-relaxed font-sans text-justify">
             {config.personal.bio.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
+              <p key={i} className="text-justify">{paragraph}</p>
             ))}
           </div>
         </div>

@@ -127,7 +127,7 @@ const Projects = () => {
             )}
           </div>
 
-          <p className={`theme-text-sub mb-2 leading-relaxed flex-1 ${featured ? 'text-sm md:text-base md:max-w-xl' : 'text-sm'}`}>
+          <p className={`theme-text-sub mb-2 leading-relaxed flex-1 text-justify ${featured ? 'text-sm md:text-base md:max-w-xl' : 'text-sm'}`}>
             {project.description}
           </p>
 
