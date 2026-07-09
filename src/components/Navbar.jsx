@@ -58,7 +58,20 @@ const Navbar = ({ darkMode, toggleTheme }) => {
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection('home')}
           >
-            <span>{config.personal.website || 'portfolio.dev'}</span>
+            <span>
+              {config.personal.website ? (
+                <>
+                  {config.personal.website.split('.')[0]}
+                  <span className="text-primary-500">
+                    .{config.personal.website.split('.').slice(1).join('.')}
+                  </span>
+                </>
+              ) : (
+                <>
+                  portfolio<span className="text-primary-500">.dev</span>
+                </>
+              )}
+            </span>
           </motion.div>
 
           {/* Desktop Navigation */}

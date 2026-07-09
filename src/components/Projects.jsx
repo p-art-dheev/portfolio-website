@@ -53,10 +53,10 @@ const Projects = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: featured ? 0 : index * 0.1 }}
-        className={`group relative rounded-3xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
+        className={`group relative rounded-3xl overflow-hidden isolate transform-gpu transition-all duration-300 flex flex-col h-full ${
           featured 
             ? 'w-full md:flex-row border-2 border-[#077DE6]/60 shadow-[0_0_28px_rgba(7,125,230,0.25),0_0_60px_rgba(7,125,230,0.10)] hover:border-[#077DE6] hover:shadow-[0_0_40px_rgba(7,125,230,0.45),0_0_80px_rgba(7,125,230,0.18)]' 
-            : 'border border-white/12 hover:border-primary-500/50 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]'
+            : 'border border-[#10B981] hover:border-[#10B981]/80 shadow-[0_0_10px_rgba(16,185,129,0.15)]'
         }`}
         style={{
           background: featured 
@@ -67,7 +67,8 @@ const Projects = () => {
         {/* Image Cover Section */}
         {hasImages ? (
           <div
-            className={`relative w-full overflow-hidden cursor-pointer group/image ${featured ? 'h-24 md:h-auto md:w-[28%] md:order-2' : 'h-36 md:h-40'}`}
+            className={`relative w-full overflow-hidden cursor-pointer group/image isolate z-0 transform-gpu ${featured ? 'h-24 md:h-auto md:w-[28%] md:order-2 rounded-t-[calc(1.5rem-2px)] md:rounded-none md:rounded-r-[calc(1.5rem-2px)]' : 'h-36 md:h-40 rounded-t-[calc(1.5rem-2px)]'}`}
+            style={{ WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
             onClick={() => openGallery(project)}
           >
             <img
@@ -82,7 +83,7 @@ const Projects = () => {
             </div>
           </div>
         ) : (
-          <div className={`relative w-full flex items-center justify-center bg-gradient-to-br ${project.gradient} opacity-80 overflow-hidden ${featured ? 'h-24 md:h-auto md:w-[28%] md:order-2' : 'h-36 md:h-40'}`}>
+          <div className={`relative w-full flex items-center justify-center bg-gradient-to-br ${project.gradient} opacity-80 overflow-hidden ${featured ? 'h-24 md:h-auto md:w-[28%] md:order-2 rounded-t-[calc(1.5rem-2px)] md:rounded-none md:rounded-r-[calc(1.5rem-2px)]' : 'h-36 md:h-40 rounded-t-[calc(1.5rem-2px)]'}`}>
             <div className="absolute inset-0 bg-black/20" />
             {Icon && <Icon className={`${featured ? 'text-5xl md:text-6xl' : 'text-5xl'} text-white opacity-80 z-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-500`} />}
           </div>
@@ -135,7 +136,7 @@ const Projects = () => {
             {project.tags.map((tag, i) => (
               <span
                 key={i}
-                className={`px-2 py-0.5 theme-surface rounded-md text-[10px] font-mono border transition-colors ${
+                className={`px-2 py-0.5 theme-surface rounded-md text-[10px] font-mono font-bold border transition-colors ${
                   featured 
                     ? 'px-2.5 py-1 text-sm md:text-[0.95rem] text-[#077DE6] border-[#077DE6]/20 group-hover:border-[#077DE6]/40' 
                     : 'text-primary-500 border-primary-500/20 group-hover:border-primary-500/40'
@@ -211,7 +212,7 @@ const Projects = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="flex justify-between items-center bg-zinc-900/80 p-4 rounded-t-xl backdrop-blur-md border border-white/10 border-b-0">
+              <div className="flex justify-between items-center bg-zinc-900/80 p-4 rounded-t-3xl backdrop-blur-md border border-white/10 border-b-0">
                 <h3 className="text-white font-display font-bold text-lg md:text-xl px-2 truncate">
                   {selectedProject.title} <span className="text-zinc-400 font-normal text-sm ml-2">{currentImageIndex + 1} / {selectedProject.images.length}</span>
                 </h3>
@@ -224,7 +225,7 @@ const Projects = () => {
               </div>
 
               {/* Main Image Area */}
-              <div className="relative bg-zinc-950 flex-1 flex items-center justify-center border border-white/10 rounded-b-xl overflow-hidden min-h-[50vh] md:min-h-[70vh]">
+              <div className="relative bg-zinc-950 flex-1 flex items-center justify-center border border-white/10 rounded-b-3xl overflow-hidden min-h-[50vh] md:min-h-[70vh] p-2 md:p-4">
                 <AnimatePresence mode="popLayout" initial={false}>
                   <motion.img
                     key={currentImageIndex}
@@ -234,7 +235,7 @@ const Projects = () => {
                     transition={{ duration: 0.3 }}
                     src={selectedProject.images[currentImageIndex]}
                     alt={`${selectedProject.title} image ${currentImageIndex + 1}`}
-                    className="max-w-full max-h-full object-contain"
+                    className="max-w-full max-h-full object-contain rounded-3xl"
                   />
                 </AnimatePresence>
 
