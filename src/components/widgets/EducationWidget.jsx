@@ -5,13 +5,13 @@ const EducationWidget = () => {
   const { degree, university, years, gpa } = config.education
 
   return (
-    <div className="glass-card p-4 h-full flex flex-col justify-center">
-      <div className="flex items-center gap-2 mb-3 theme-text-sub">
+    <div className="glass-card px-4 py-2.5 md:py-3 h-full flex flex-col justify-center">
+      <div className="flex items-center gap-2 mb-2 theme-text-sub">
         <FaGraduationCap className="text-lg md:text-xl" />
         <span className="font-display font-semibold text-[11px] uppercase" style={{ letterSpacing: '0.12em' }}>Education</span>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         <h4 className="text-lg md:text-xl font-display font-semibold text-primary-500 leading-tight">{degree}</h4>
         <p className="theme-text-sub text-sm md:text-base font-sans leading-relaxed">{university}</p>
         <div className="flex items-center gap-2 flex-wrap">

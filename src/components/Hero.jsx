@@ -92,8 +92,8 @@ const Hero = () => {
 
             {/* I'm + Name */}
             <h1 className="flex flex-wrap sm:flex-nowrap items-baseline leading-tight mb-3 font-display" style={{ letterSpacing: '-0.02em' }}>
-              <span className="text-lg md:text-xl lg:text-2xl font-bold theme-greeting mr-2 opacity-80">I'm</span>
-              <span className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-extrabold theme-name">{config.personal.name}</span>
+              <span className="text-xl md:text-2xl lg:text-3xl font-bold theme-greeting mr-2.5 opacity-80">I'm</span>
+              <span className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl font-extrabold theme-name">{config.personal.name}</span>
             </h1>
 
             {/* Tagline pill */}

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FaGithub } from 'react-icons/fa'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 
 const CONTRIBUTION_LEVELS = [
   'bg-[--color-contrib-0]',
@@ -127,6 +127,14 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
     return () => { cancelled = true }
   }, [username, selectedYear, startYear])
 
+  const scrollContainerRef = useRef(null)
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth
+    }
+  }, [contributions])
+
   return (
     <div ref={ref} className="glass-card p-6">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
@@ -136,7 +144,7 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
         </div>
 
         <div className="flex items-center gap-3 flex-wrap">
-          <div className="flex items-center gap-3 text-xs">
+          <div className="hidden sm:flex items-center gap-3 text-xs">
             {[
               { label: 'Total', value: stats.total },
               { label: 'Current', value: `${stats.current} days` },
@@ -180,7 +188,7 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
 
       <div>
         <div className="relative mb-4">
-          <div className="absolute left-0 top-0 bottom-0 grid grid-rows-7 gap-[3px] text-xs text-muted" style={{ width: 36 }}>
+          <div className="absolute left-0 top-0 bottom-0 z-10 grid grid-rows-7 gap-[3px] text-xs text-muted pr-2 rounded-l-md" style={{ width: 36, background: 'var(--color-surface-elevated)' }}>
             {Array.from({ length: 7 }).map((_, idx) => (
               <div key={idx} className="h-[13px] flex items-center">
                 {idx === 1 ? 'Mon' : idx === 3 ? 'Wed' : idx === 5 ? 'Fri' : ''}
@@ -188,7 +196,7 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
             ))}
           </div>
 
-          <div className="pl-10 overflow-x-auto pb-3">
+          <div ref={scrollContainerRef} className="pl-10 overflow-x-auto pb-3">
             <div
               className="w-max"
               style={{
