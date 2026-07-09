@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaFileAlt, FaEnvelope, FaUser } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 import StatusWidget from './widgets/StatusWidget'
-// import MusicWidget from './widgets/MusicWidget'
 import EducationWidget from './widgets/EducationWidget'
 import { config } from '../config'
 
@@ -63,7 +62,7 @@ const Hero = () => {
             </div>
 
             {/* I'm + Name */}
-            <h1 className="flex items-baseline leading-tight mb-3 whitespace-nowrap font-display" style={{ letterSpacing: '-0.02em' }}>
+            <h1 className="flex flex-wrap sm:flex-nowrap items-baseline leading-tight mb-3 font-display" style={{ letterSpacing: '-0.02em' }}>
               <span className="text-lg md:text-xl lg:text-2xl font-bold theme-greeting mr-2 opacity-80">I'm</span>
               <span className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-extrabold theme-name">{config.personal.name}</span>
             </h1>
@@ -81,7 +80,7 @@ const Hero = () => {
             </p>
 
             {/* Buttons */}
-            <div className="flex gap-3 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -153,12 +152,6 @@ const Hero = () => {
             <EducationWidget />
           </div>
         </motion.div>
-
-        {/* <motion.div variants={item} className="col-span-1 md:col-span-4 lg:col-span-3 row-span-1">
-          <MusicWidget />
-        </motion.div> */}
-
-        
       </motion.div>
     </section>
   )

@@ -67,7 +67,7 @@ const Projects = () => {
         {/* Image Cover Section */}
         {hasImages ? (
           <div
-            className={`relative w-full overflow-hidden cursor-pointer group/image isolate z-0 transform-gpu ${featured ? 'h-24 md:h-auto md:w-[28%] md:order-2 rounded-t-[calc(1.5rem-2px)] md:rounded-none md:rounded-r-[calc(1.5rem-2px)]' : 'h-36 md:h-40 rounded-t-[calc(1.5rem-2px)]'}`}
+            className={`relative w-full overflow-hidden cursor-pointer group/image isolate z-0 transform-gpu ${featured ? 'h-44 sm:h-56 md:h-auto md:w-[28%] md:order-2 rounded-t-[calc(1.5rem-2px)] md:rounded-none md:rounded-r-[calc(1.5rem-2px)]' : 'h-36 md:h-40 rounded-t-[calc(1.5rem-2px)]'}`}
             style={{ WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
             onClick={() => openGallery(project)}
           >

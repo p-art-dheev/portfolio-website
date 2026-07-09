@@ -114,7 +114,7 @@ const ConnectSection = () => {
             </div>
 
             {/* Socials — RHS */}
-            <div className="flex flex-col gap-3">
+            <div className="w-full md:w-1/3 flex flex-col gap-3">
               <div>
                 <h3 className="text-lg font-display font-bold theme-text">Socials</h3>
                 <p className="text-sm theme-text-sub mt-1">Connect with me across the digital universe.</p>

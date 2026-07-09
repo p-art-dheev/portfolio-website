@@ -188,7 +188,7 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
             ))}
           </div>
 
-          <div className="pl-10">
+          <div className="pl-10 overflow-x-auto pb-2">
             <div
               className=""
               style={{
