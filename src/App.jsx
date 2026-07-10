@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -10,8 +10,21 @@ import ConnectSection from './components/ConnectSection'
 import ScrollToTop from './components/ScrollToTop'
 
 function Portfolio({ darkMode, toggleTheme }) {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
+
   return (
     <div className="relative z-10">
+      {/* Scroll Progress Indicator Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#059669] via-[#0d9488] to-[#077DE6] z-[100] origin-left shadow-[0_0_10px_rgba(5,150,105,0.8)] pointer-events-none"
+        style={{ scaleX }}
+      />
+
       <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
 
       <main className="max-w-6xl mx-auto px-4 md:px-8 lg:px-12 pt-2">
