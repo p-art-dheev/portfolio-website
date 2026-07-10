@@ -105,16 +105,18 @@ const Projects = () => {
               </div>
 
               {/* Right content area: Tech tags */}
-              <div className="flex flex-wrap md:flex-col md:items-end justify-start gap-1.5 shrink-0">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 rounded-lg bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30 text-xs font-mono font-semibold shadow-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap md:flex-col md:items-end justify-start gap-1.5 shrink-0">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-lg bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30 text-xs font-mono font-semibold shadow-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
@@ -230,20 +232,22 @@ const Projects = () => {
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-1">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className={`px-2 py-0.5 rounded text-[10px] font-mono font-semibold border ${
-                      featured
-                        ? 'bg-[#077DE6]/15 text-[#077DE6] border-[#077DE6]/30'
-                        : 'bg-primary-500/10 text-primary-400 border-primary-500/20'
-                    }`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-1">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className={`px-2 py-0.5 rounded text-[10px] font-mono font-semibold border ${
+                        featured
+                          ? 'bg-[#077DE6]/15 text-[#077DE6] border-[#077DE6]/30'
+                          : 'bg-primary-500/10 text-primary-400 border-primary-500/20'
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
