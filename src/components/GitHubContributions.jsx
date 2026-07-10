@@ -187,16 +187,24 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
       </div>
 
       <div>
-        <div className="relative mb-4">
-          <div className="absolute left-0 top-0 bottom-0 z-10 grid grid-rows-7 gap-[3px] text-xs text-muted pr-2 rounded-l-md" style={{ width: 36, background: 'var(--color-surface-elevated)' }}>
-            {Array.from({ length: 7 }).map((_, idx) => (
-              <div key={idx} className="h-[13px] flex items-center">
-                {idx === 1 ? 'Mon' : idx === 3 ? 'Wed' : idx === 5 ? 'Fri' : ''}
+        <div className="flex items-start gap-2 mb-4">
+          <div
+            className="flex-shrink-0 select-none"
+            style={{
+              width: 28,
+              display: 'grid',
+              gridTemplateRows: 'repeat(7, 13px)',
+              gap: '3px',
+            }}
+          >
+            {['', 'Mon', '', 'Wed', '', 'Fri', ''].map((day, idx) => (
+              <div key={idx} className="h-[13px] flex items-center font-mono text-[10px] theme-text-muted leading-none">
+                {day}
               </div>
             ))}
           </div>
 
-          <div ref={scrollContainerRef} className="pl-10 overflow-x-auto pb-3">
+          <div ref={scrollContainerRef} className="flex-1 overflow-x-auto pb-3">
             <div
               className="w-max"
               style={{
