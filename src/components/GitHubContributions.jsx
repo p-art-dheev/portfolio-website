@@ -206,13 +206,15 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
 
           <div ref={scrollContainerRef} className="flex-1 overflow-x-auto pb-3">
             <div
-              className="w-max"
+              className="min-w-max w-full"
               style={{
                 display: 'grid',
                 gridAutoFlow: 'column',
                 gridTemplateRows: 'repeat(7, 13px)',
                 gridAutoColumns: '13px',
-                gap: '3px'
+                rowGap: '3px',
+                columnGap: '3px',
+                justifyContent: 'space-between'
               }}
             >
               {contributions.map((day, i) => (
@@ -221,7 +223,7 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
                   initial={{ opacity: 0, scale: 0 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ delay: i * 0.001 }}
-                  className={`w-3 h-3 rounded-sm cursor-pointer transition-transform hover:scale-125 flex items-center justify-center`}
+                  className="w-[13px] h-[13px] rounded-sm cursor-pointer transition-transform hover:scale-125 flex items-center justify-center"
                   style={day.level === 0 ? { backgroundColor: 'var(--color-contrib-0)' } : undefined}
                   title={formatContribTitle(day.date, day.count)}
                 >
