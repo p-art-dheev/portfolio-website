@@ -11,6 +11,7 @@ import ScrollToTop from './components/ScrollToTop'
 import AdminLogin from './components/admin/AdminLogin'
 import AdminDashboard from './components/admin/AdminDashboard'
 import { useAnalytics } from './hooks/useAnalytics'
+import { Analytics } from '@vercel/analytics/react'
 
 function Portfolio({ darkMode, toggleTheme }) {
   useAnalytics()
@@ -84,6 +85,9 @@ function App() {
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
+
+      {/* Vercel Analytics — tracks all page views automatically */}
+      <Analytics />
     </div>
   )
 }
