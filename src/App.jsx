@@ -8,8 +8,12 @@ import TechStack from './components/TechStack'
 import Projects from './components/Projects'
 import ConnectSection from './components/ConnectSection'
 import ScrollToTop from './components/ScrollToTop'
+import AdminLogin from './components/admin/AdminLogin'
+import AdminDashboard from './components/admin/AdminDashboard'
+import { useAnalytics } from './hooks/useAnalytics'
 
 function Portfolio({ darkMode, toggleTheme }) {
+  useAnalytics()
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -77,6 +81,8 @@ function App() {
       {/* Content */}
       <Routes>
         <Route path="/" element={<Portfolio darkMode={darkMode} toggleTheme={toggleTheme} />} />
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </div>
   )
