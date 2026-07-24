@@ -3,16 +3,38 @@ import { useInView } from 'react-intersection-observer'
 import { FaGithub } from 'react-icons/fa'
 import { useEffect, useState, useMemo, useRef } from 'react'
 
-const CONTRIBUTION_LEVELS = [
-  'bg-[--color-contrib-0]',
-  'bg-[#0e4429]',
-  'bg-[#006d32]',
-  'bg-[#26a641]',
-  'bg-[#39d353]',
-]
-
 const getLevel = (count) =>
   count === 0 ? 0 : count <= 3 ? 1 : count <= 6 ? 2 : count <= 9 ? 3 : 4
+
+// 3D Isometric constants
+const SP_X = 14;
+const SP_Y = 7;
+const B_X = 12;
+const B_Y = 6;
+const HEIGHTS = [2, 10, 20, 30, 40];
+
+const IsometricBlock = ({ x, y, level, date, count }) => {
+  const cx = (x - y) * SP_X;
+  const cy = (x + y) * SP_Y;
+  const h = HEIGHTS[level] || 2;
+  
+  const pTop = `${cx},${cy - B_Y - h} ${cx + B_X},${cy - h} ${cx},${cy + B_Y - h} ${cx - B_X},${cy - h}`;
+  const pLeft = `${cx - B_X},${cy - h} ${cx},${cy + B_Y - h} ${cx},${cy + B_Y} ${cx - B_X},${cy}`;
+  const pRight = `${cx},${cy + B_Y - h} ${cx + B_X},${cy - h} ${cx + B_X},${cy} ${cx},${cy + B_Y}`;
+
+  const cTop = `var(--color-contrib-${level})`;
+  const cLeft = `var(--color-contrib-${level}-l)`;
+  const cRight = `var(--color-contrib-${level}-r)`;
+
+  return (
+    <g className="transition-transform hover:-translate-y-2 cursor-pointer" style={{ transition: 'transform 0.2s' }}>
+      <title>{formatContribTitle(date, count)}</title>
+      <polygon points={pLeft} fill={cLeft} stroke={cLeft} strokeWidth="0.5" />
+      <polygon points={pRight} fill={cRight} stroke={cRight} strokeWidth="0.5" />
+      <polygon points={pTop} fill={cTop} stroke={cTop} strokeWidth="0.5" />
+    </g>
+  );
+}
 
 const calculateStreaks = (contributions) => {
   let total = 0, longest = 0, tempStreak = 0, current = 0
@@ -51,6 +73,7 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
   const [contributions, setContributions] = useState([])
   const [selectedYear, setSelectedYear] = useState('last')
   const [stats, setStats] = useState({ total: 0, current: 0, longest: 0 })
+  const [viewMode, setViewMode] = useState('2d')
 
   const currentYear = new Date().getFullYear()
   const years = useMemo(
@@ -172,6 +195,21 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
             ))}
           </select>
 
+          <div className="flex items-center theme-surface border theme-border rounded-md overflow-hidden">
+            <button 
+              onClick={() => setViewMode('2d')} 
+              className={`px-3 py-1 text-xs font-mono font-semibold transition-colors ${viewMode === '2d' ? 'bg-primary-500 text-white' : 'theme-text-muted hover:text-primary-500'}`}
+            >
+              2D
+            </button>
+            <button 
+              onClick={() => setViewMode('3d')} 
+              className={`px-3 py-1 text-xs font-mono font-semibold transition-colors ${viewMode === '3d' ? 'bg-primary-500 text-white' : 'theme-text-muted hover:text-primary-500'}`}
+            >
+              3D
+            </button>
+          </div>
+
           <a
             href={`https://github.com/${username}`}
             target="_blank"
@@ -188,65 +226,98 @@ const GitHubContributions = ({ username = '', startYear = 2020 }) => {
 
       <div>
         <div className="flex items-start gap-2 mb-4">
-          <div
-            className="flex-shrink-0 select-none"
-            style={{
-              width: 28,
-              display: 'grid',
-              gridTemplateRows: 'repeat(7, 13px)',
-              gap: '3px',
-            }}
-          >
-            {['', 'Mon', '', 'Wed', '', 'Fri', ''].map((day, idx) => (
-              <div key={idx} className="h-[13px] flex items-center font-mono text-[10px] theme-text-muted leading-none">
-                {day}
-              </div>
-            ))}
-          </div>
-
-          <div ref={scrollContainerRef} className="flex-1 overflow-x-auto pb-3">
+          {viewMode === '2d' && (
             <div
-              className="min-w-max w-full"
+              className="flex-shrink-0 select-none"
               style={{
+                width: 28,
                 display: 'grid',
-                gridAutoFlow: 'column',
                 gridTemplateRows: 'repeat(7, 13px)',
-                gridAutoColumns: '13px',
-                rowGap: '3px',
-                columnGap: '3px',
-                justifyContent: 'space-between'
+                gap: '3px',
               }}
             >
-              {contributions.map((day, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: i * 0.001 }}
-                  className="w-[13px] h-[13px] rounded-sm cursor-pointer transition-transform hover:scale-125 flex items-center justify-center"
-                  style={day.level === 0 ? { backgroundColor: 'var(--color-contrib-0)' } : undefined}
-                  title={formatContribTitle(day.date, day.count)}
-                >
-                  {day.level > 0 && (
-                    <div className={`w-full h-full rounded-sm ${CONTRIBUTION_LEVELS[day.level]}`} />
-                  )}
-                </motion.div>
+              {['', 'Mon', '', 'Wed', '', 'Fri', ''].map((day, idx) => (
+                <div key={idx} className="h-[13px] flex items-center font-mono text-[10px] theme-text-muted leading-none">
+                  {day}
+                </div>
               ))}
             </div>
+          )}
+
+          <div ref={scrollContainerRef} className="flex-1 overflow-x-auto pb-3 custom-scrollbar">
+            {viewMode === '3d' ? (
+              <div className="min-w-max w-full flex justify-center pt-8">
+                <svg 
+                  width="820" 
+                  height="480" 
+                  viewBox="-140 -80 820 480" 
+                  style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.2))' }}
+                >
+                  <g className="days-labels">
+                    {['', 'Mon', '', 'Wed', '', 'Fri', ''].map((day, y) => {
+                      if (!day) return null;
+                      const cx = (-1.5 - y) * SP_X;
+                      const cy = (-1.5 + y) * SP_Y;
+                      return (
+                        <text 
+                          key={y} 
+                          x={cx - 10} 
+                          y={cy} 
+                          className="text-[10px] theme-text-muted fill-current font-mono"
+                          alignmentBaseline="middle"
+                          textAnchor="end"
+                        >
+                          {day}
+                        </text>
+                      )
+                    })}
+                  </g>
+                  {contributions
+                    .map((day, i) => ({ ...day, x: Math.floor(i / 7), y: i % 7 }))
+                    .sort((a, b) => (a.x + a.y) - (b.x + b.y))
+                    .map((day, i) => (
+                      <IsometricBlock key={i} {...day} />
+                    ))}
+                </svg>
+              </div>
+            ) : (
+              <div
+                className="min-w-max w-full"
+                style={{
+                  display: 'grid',
+                  gridAutoFlow: 'column',
+                  gridTemplateRows: 'repeat(7, 13px)',
+                  gridAutoColumns: '13px',
+                  rowGap: '3px',
+                  columnGap: '3px',
+                  justifyContent: 'space-between'
+                }}
+              >
+                {contributions.map((day, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: i * 0.001 }}
+                    className="w-[13px] h-[13px] rounded-sm cursor-pointer transition-transform hover:scale-125"
+                    style={{ backgroundColor: `var(--color-contrib-${day.level})` }}
+                    title={formatContribTitle(day.date, day.count)}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         <div className="flex items-center justify-end gap-2 text-xs theme-text-muted">
           <span>Less</span>
           <div className="flex gap-1">
-            {CONTRIBUTION_LEVELS.map((cls, i) => (
+            {[0, 1, 2, 3, 4].map((level) => (
               <div
-                key={i}
-                className={`w-3 h-3 rounded-sm`}
-                style={i === 0 ? { backgroundColor: 'var(--color-contrib-0)' } : undefined}
-              >
-                {i > 0 && <div className={`w-full h-full rounded-sm ${cls}`} />}
-              </div>
+                key={level}
+                className="w-3 h-3 rounded-sm"
+                style={{ backgroundColor: `var(--color-contrib-${level})` }}
+              />
             ))}
           </div>
           <span>More</span>

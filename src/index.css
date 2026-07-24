@@ -27,6 +27,20 @@
 
     /* Contribution grid (GitHub-style dark) */
     --color-contrib-0: #161b22;
+    --color-contrib-0-l: #0d1117;
+    --color-contrib-0-r: #10141a;
+    --color-contrib-1: #0e4429;
+    --color-contrib-1-l: #061c11;
+    --color-contrib-1-r: #0a301d;
+    --color-contrib-2: #006d32;
+    --color-contrib-2-l: #002b14;
+    --color-contrib-2-r: #004a22;
+    --color-contrib-3: #26a641;
+    --color-contrib-3-l: #0e421a;
+    --color-contrib-3-r: #19722c;
+    --color-contrib-4: #39d353;
+    --color-contrib-4-l: #165c22;
+    --color-contrib-4-r: #269a3a;
 
     /* Shadows */
     --shadow-card-hover:
@@ -53,7 +67,21 @@
     --color-control-fg: #ffffff;
     --color-control-hover: rgba(0, 0, 0, 0.06);
 
-    --color-contrib-0: #e5e5e5;
+    --color-contrib-0: #ebedf0;
+    --color-contrib-0-l: #d1d5da;
+    --color-contrib-0-r: #e1e4e8;
+    --color-contrib-1: #9be9a8;
+    --color-contrib-1-l: #62c370;
+    --color-contrib-1-r: #7fd68c;
+    --color-contrib-2: #40c463;
+    --color-contrib-2-l: #248a3e;
+    --color-contrib-2-r: #31a84f;
+    --color-contrib-3: #30a14e;
+    --color-contrib-3-l: #1b632d;
+    --color-contrib-3-r: #25823c;
+    --color-contrib-4: #216e39;
+    --color-contrib-4-l: #0f3c1d;
+    --color-contrib-4-r: #175429;
 
     --shadow-card-hover:
       0 8px 24px rgba(0, 0, 0, 0.18), 0 0 1px rgba(0, 0, 0, 0.12);
