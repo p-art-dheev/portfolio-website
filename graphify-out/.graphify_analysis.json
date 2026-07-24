@@ -1,0 +1,429 @@
+{
+  "communities": {
+    "0": [
+      "src_app",
+      "src_app_app",
+      "src_app_portfolio",
+      "src_components_about",
+      "src_components_about_about",
+      "src_components_admin_adminlogin",
+      "src_components_admin_adminlogin_adminlogin",
+      "src_components_connectsection",
+      "src_components_connectsection_connectsection",
+      "src_components_connectsection_icon_map",
+      "src_components_hero",
+      "src_components_hero_greetings",
+      "src_components_hero_hero",
+      "src_components_navbar",
+      "src_components_navbar_nav_links",
+      "src_components_navbar_navbar",
+      "src_components_projects",
+      "src_components_projects_icon_map",
+      "src_components_projects_projects",
+      "src_components_scrolltotop",
+      "src_components_scrolltotop_scrolltotop",
+      "src_components_techstack",
+      "src_components_techstack_icon_map",
+      "src_components_techstack_techitem",
+      "src_components_techstack_techstack",
+      "src_components_widgets_educationwidget",
+      "src_components_widgets_educationwidget_educationwidget",
+      "src_components_widgets_musicwidget",
+      "src_components_widgets_musicwidget_bars",
+      "src_components_widgets_musicwidget_musicwidget",
+      "src_components_widgets_statuswidget",
+      "src_components_widgets_statuswidget_statuswidget",
+      "src_config",
+      "src_config_config",
+      "src_hooks_useanalytics",
+      "src_hooks_useanalytics_useanalytics",
+      "src_main"
+    ],
+    "1": [
+      "autoprefixer",
+      "concurrently",
+      "jimp",
+      "package_devdependencies",
+      "package_devdependencies_autoprefixer",
+      "package_devdependencies_concurrently",
+      "package_devdependencies_jimp",
+      "package_devdependencies_png_to_ico",
+      "package_devdependencies_postcss",
+      "package_devdependencies_sharp",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_to_ico",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_vite",
+      "package_devdependencies_vitejs_plugin_react",
+      "png_to_ico",
+      "postcss",
+      "sharp",
+      "tailwindcss",
+      "to_ico",
+      "types_react",
+      "types_react_dom",
+      "vite",
+      "vitejs_plugin_react"
+    ],
+    "2": [
+      "emailjs_browser",
+      "framer_motion",
+      "lucide_react",
+      "package_dependencies",
+      "package_dependencies_emailjs_browser",
+      "package_dependencies_framer_motion",
+      "package_dependencies_lucide_react",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_react_icons",
+      "package_dependencies_react_intersection_observer",
+      "package_dependencies_react_router_dom",
+      "package_dependencies_recharts",
+      "package_dependencies_vercel_analytics",
+      "react",
+      "react_dom",
+      "react_icons",
+      "react_intersection_observer",
+      "react_router_dom",
+      "recharts",
+      "vercel_analytics"
+    ],
+    "3": [
+      "nodemon",
+      "ref_api",
+      "ref_backend",
+      "ref_portfolio",
+      "server_package",
+      "server_package_author",
+      "server_package_description",
+      "server_package_devdependencies",
+      "server_package_devdependencies_nodemon",
+      "server_package_keywords",
+      "server_package_license",
+      "server_package_main",
+      "server_package_name",
+      "server_package_scripts",
+      "server_package_scripts_dev",
+      "server_package_scripts_start",
+      "server_package_type",
+      "server_package_version"
+    ],
+    "4": [
+      "cors",
+      "dotenv",
+      "express",
+      "geoip_lite",
+      "jsonwebtoken",
+      "neondatabase_serverless",
+      "nodemailer",
+      "server_package_dependencies",
+      "server_package_dependencies_cors",
+      "server_package_dependencies_dotenv",
+      "server_package_dependencies_express",
+      "server_package_dependencies_geoip_lite",
+      "server_package_dependencies_jsonwebtoken",
+      "server_package_dependencies_neondatabase_serverless",
+      "server_package_dependencies_nodemailer",
+      "server_package_dependencies_ua_parser_js",
+      "ua_parser_js"
+    ],
+    "5": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_dev_all",
+      "package_scripts_preview",
+      "package_scripts_server",
+      "package_type",
+      "package_version"
+    ],
+    "6": [
+      "scripts_generate_favicon",
+      "scripts_generate_favicon_circlemask",
+      "scripts_generate_favicon_circlepng",
+      "scripts_generate_favicon_fs",
+      "scripts_generate_favicon_outdir",
+      "scripts_generate_favicon_path",
+      "scripts_generate_favicon_run",
+      "scripts_generate_favicon_sharp",
+      "scripts_generate_favicon_src",
+      "scripts_generate_favicon_toico"
+    ],
+    "7": [
+      "server_database",
+      "server_database_getanalyticsstats",
+      "server_database_initializedatabase",
+      "server_database_sql",
+      "server_database_trackanalytics",
+      "server_server",
+      "server_server_app",
+      "server_server_rationale_131",
+      "server_server_requireauth"
+    ],
+    "8": [
+      "scripts_generate_monogram_favicon",
+      "scripts_generate_monogram_favicon_buildsvg",
+      "scripts_generate_monogram_favicon_fs",
+      "scripts_generate_monogram_favicon_outdir",
+      "scripts_generate_monogram_favicon_path",
+      "scripts_generate_monogram_favicon_run",
+      "scripts_generate_monogram_favicon_sharp",
+      "scripts_generate_monogram_favicon_toico"
+    ],
+    "9": [
+      "src_components_admin_admindashboard",
+      "src_components_admin_admindashboard_admindashboard",
+      "src_components_admin_admindashboard_colors",
+      "src_components_admin_admindashboard_customtooltip",
+      "src_components_admin_admindashboard_formatdate",
+      "src_components_admin_admindashboard_formattimestamp",
+      "src_components_admin_admindashboard_sectioncard",
+      "src_components_admin_admindashboard_statcard"
+    ],
+    "10": [
+      "src_components_githubcontributions",
+      "src_components_githubcontributions_calculatestreaks",
+      "src_components_githubcontributions_contribution_levels",
+      "src_components_githubcontributions_formatcontribtitle",
+      "src_components_githubcontributions_getlevel",
+      "src_components_githubcontributions_githubcontributions",
+      "src_components_githubcontributions_months",
+      "src_components_githubcontributions_ordinal"
+    ],
+    "11": [
+      "codeproctor_platform",
+      "pardheev_vatturu",
+      "public_assets_images_profile2",
+      "public_assets_projects_1_3",
+      "public_assets_projects_1_4",
+      "public_assets_projects_1_5",
+      "public_assets_resume_pardheev_s_resume"
+    ],
+    "12": [
+      "github_workflows_deploy_yml",
+      "index_html",
+      "public_assets_images_profile1_jpeg"
+    ],
+    "13": [
+      "postcss_config"
+    ],
+    "14": [
+      "public_assets_images_apple_touch_icon"
+    ],
+    "15": [
+      "public_assets_images_endofbeginning_webp"
+    ],
+    "16": [
+      "public_assets_images_favicon_32x32"
+    ],
+    "17": [
+      "public_assets_images_vivalavida_webp"
+    ],
+    "18": [
+      "public_assets_images_wildflower_webp"
+    ],
+    "19": [
+      "public_assets_projects_1_1_png"
+    ],
+    "20": [
+      "public_assets_projects_1_2_png"
+    ],
+    "21": [
+      "public_assets_projects_2_1_png"
+    ],
+    "22": [
+      "public_assets_projects_currentlybuilding_1_png"
+    ],
+    "23": [
+      "public_assets_readme"
+    ],
+    "24": [
+      "readme"
+    ],
+    "25": [
+      "tailwind_config"
+    ],
+    "26": [
+      "vite_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.0960960960960961,
+    "1": 0.08,
+    "2": 0.09523809523809523,
+    "3": 0.1111111111111111,
+    "4": 0.11764705882352941,
+    "5": 0.18181818181818182,
+    "6": 0.28888888888888886,
+    "7": 0.3888888888888889,
+    "8": 0.35714285714285715,
+    "9": 0.35714285714285715,
+    "10": 0.39285714285714285,
+    "11": 0.2857142857142857,
+    "12": 0.6666666666666666,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_config_config",
+      "label": "config",
+      "degree": 9
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 6
+    },
+    {
+      "id": "src_components_githubcontributions_githubcontributions",
+      "label": "GitHubContributions()",
+      "degree": 5
+    },
+    {
+      "id": "scripts_generate_favicon_circlepng",
+      "label": "circlePng()",
+      "degree": 4
+    },
+    {
+      "id": "scripts_generate_monogram_favicon_run",
+      "label": "run()",
+      "degree": 4
+    },
+    {
+      "id": "server_database_sql",
+      "label": "sql",
+      "degree": 4
+    },
+    {
+      "id": "server_package_keywords",
+      "label": "keywords",
+      "degree": 4
+    },
+    {
+      "id": "src_components_admin_admindashboard_admindashboard",
+      "label": "AdminDashboard()",
+      "degree": 4
+    },
+    {
+      "id": "scripts_generate_favicon_run",
+      "label": "run()",
+      "degree": 3
+    },
+    {
+      "id": "server_database_initializedatabase",
+      "label": "initializeDatabase()",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Index HTML",
+      "target": "Pardheev Vatturu Profile Photo",
+      "source_files": [
+        "index.html",
+        "public/assets/images/profile1.jpeg"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc ↔ image); connects across different repos/directories"
+    },
+    {
+      "source": "GitHub Deploy Workflow",
+      "target": "Index HTML",
+      "source_files": [
+        ".github/workflows/deploy.yml",
+        "index.html"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "Profile Photo of Pardheev Vatturu",
+      "target": "Pardheev Vatturu",
+      "source_files": [
+        "public/assets/images/profile2.png",
+        "public/assets/resume/Pardheev_s_Resume.pdf"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (image ↔ paper)"
+    },
+    {
+      "source": "CodeProctor Code Editor UI",
+      "target": "Pardheev Vatturu",
+      "source_files": [
+        "public/assets/projects/1/3.png",
+        "public/assets/resume/Pardheev_s_Resume.pdf"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (image ↔ paper)"
+    },
+    {
+      "source": "Portfolio()",
+      "target": "useAnalytics()",
+      "source_files": [
+        "src/App.jsx",
+        "src/hooks/useAnalytics.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `Frontend Development Tools` to `Package Build Scripts`?",
+      "why": "High betweenness centrality (0.055) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `Frontend Library Dependencies` to `Package Build Scripts`?",
+      "why": "High betweenness centrality (0.048) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `Backend Server Middleware` to `Backend Project Configuration`?",
+      "why": "High betweenness centrality (0.021) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `name`, `private`, `version` to the rest of the system?",
+      "why": "85 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Frontend React Components` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.0960960960960961 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Frontend Development Tools` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Frontend Library Dependencies` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

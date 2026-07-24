@@ -7,6 +7,8 @@ import About from './components/About'
 import TechStack from './components/TechStack'
 import Projects from './components/Projects'
 import ConnectSection from './components/ConnectSection'
+import Footer from './components/Footer'
+import NotFound from './components/NotFound'
 import ScrollToTop from './components/ScrollToTop'
 import AdminLogin from './components/admin/AdminLogin'
 import AdminDashboard from './components/admin/AdminDashboard'
@@ -47,6 +49,7 @@ function Portfolio({ darkMode, toggleTheme }) {
         </motion.div>
       </main>
 
+      <Footer />
       <ScrollToTop />
     </div>
   )
@@ -84,6 +87,7 @@ function App() {
         <Route path="/" element={<Portfolio darkMode={darkMode} toggleTheme={toggleTheme} />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Vercel Analytics — tracks all page views automatically */}

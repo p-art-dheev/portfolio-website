@@ -1,0 +1,1 @@
+{"nodes": [{"id": "github_workflows_deploy_yml", "label": "GitHub Deploy Workflow", "file_type": "code", "source_file": ".github/workflows/deploy.yml"}], "edges": [{"source": "github_workflows_deploy_yml", "target": "index_html", "relation": "references", "confidence": "INFERRED", "confidence_score": 0.9, "source_file": ".github/workflows/deploy.yml"}], "hyperedges": []}
