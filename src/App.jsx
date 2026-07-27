@@ -28,7 +28,7 @@ function Portfolio({ darkMode, toggleTheme }) {
     <div className="relative z-10">
       {/* Scroll Progress Indicator Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#059669] via-[#0d9488] to-[#077DE6] z-[100] origin-left shadow-[0_0_10px_rgba(5,150,105,0.8)] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-green-500 z-[100] origin-left shadow-[0_0_10px_rgba(34,197,94,0.8)] pointer-events-none"
         style={{ scaleX }}
       />
 
