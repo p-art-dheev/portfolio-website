@@ -56,10 +56,7 @@ const Projects = () => {
           transition={{ duration: 0.4 }}
           className="w-full"
         >
-          <div className="relative overflow-hidden rounded-3xl border-2 border-fuchsia-500/60 hover:border-fuchsia-400 bg-gradient-to-r from-[#171124] via-[#1f1633] to-[#141021] p-5 sm:p-6 shadow-[0_0_35px_rgba(217,70,239,0.18)] hover:shadow-[0_0_45px_rgba(217,70,239,0.3)] transition-all duration-300 group hover:-translate-y-1">
-            {/* Decorative ambient glow */}
-            <div className="absolute -right-10 -top-10 w-48 h-48 bg-fuchsia-500/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute left-1/3 -bottom-10 w-48 h-48 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 hover:border-white/20 bg-gradient-to-r from-[#171124] via-[#1f1633] to-[#141021] p-5 sm:p-6 shadow-md transition-all duration-300 group hover:-translate-y-1">
 
             <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
               {/* Left content area */}
@@ -128,27 +125,19 @@ const Projects = () => {
         key={project.title}
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: featured ? 0 : index * 0.08 }}
+        transition={{ delay: index * 0.08 }}
         className="h-full"
       >
         <div
-          className={`flex flex-col h-full rounded-3xl overflow-hidden isolate transform-gpu transition-all duration-300 group hover:-translate-y-1.5 ${
-            featured
-              ? 'border-2 border-[#077DE6]/70 hover:border-[#077DE6] shadow-[0_0_28px_rgba(7,125,230,0.22)] hover:shadow-[0_0_40px_rgba(7,125,230,0.35)] md:flex-row md:max-h-[150px]'
-              : 'border border-[#10B981]/50 hover:border-[#10B981] shadow-md hover:shadow-[0_0_24px_rgba(16,185,129,0.2)]'
-          }`}
+          className="flex flex-col md:flex-row md:max-h-[150px] h-full rounded-3xl overflow-hidden isolate transform-gpu transition-all duration-300 group hover:-translate-y-1.5 border border-white/10 hover:border-white/20 shadow-md"
           style={{
-            background: featured
-              ? 'linear-gradient(180deg, rgba(7,125,230,0.15) 0%, rgba(19,19,26,0.95) 100%)'
-              : 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(19,19,26,0.95) 100%)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(19,19,26,0.95) 100%)',
           }}
         >
           {/* Cover Image Header */}
           {hasImages ? (
             <div
-              className={`relative w-full h-28 sm:h-32 overflow-hidden cursor-pointer group/image shrink-0 ${
-                featured ? 'md:w-72 md:h-full' : ''
-              }`}
+              className="relative w-full h-28 sm:h-32 md:w-72 md:h-full overflow-hidden cursor-pointer group/image shrink-0"
               onClick={() => openGallery(project)}
             >
               <img
@@ -177,9 +166,7 @@ const Projects = () => {
               </div>
             </div>
           ) : (
-            <div className={`relative w-full h-28 sm:h-32 flex items-center justify-center bg-gradient-to-br ${project.gradient} overflow-hidden shrink-0 ${
-              featured ? 'md:w-72 md:h-full' : ''
-            }`}>
+            <div className={`relative w-full h-28 sm:h-32 md:w-72 md:h-full flex items-center justify-center bg-gradient-to-br ${project.gradient} overflow-hidden shrink-0`}>
               <div className="absolute inset-0 bg-black/20" />
               {Icon && <Icon className="text-4xl text-white opacity-90 z-10 drop-shadow-md group-hover:scale-110 transition-transform duration-300" />}
 
@@ -199,9 +186,7 @@ const Projects = () => {
           <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between gap-2.5 overflow-hidden">
             <div>
               <div className="flex flex-wrap items-start justify-between gap-2 mb-1.5">
-                <h3 className={`font-display font-extrabold leading-snug transition-colors flex-1 min-w-[180px] ${
-                  featured ? 'text-lg sm:text-xl text-[#077DE6] group-hover:text-[#3ba2ff]' : 'text-base sm:text-lg theme-text group-hover:text-primary-400'
-                }`}>
+                <h3 className="font-display font-extrabold leading-snug transition-colors flex-1 min-w-[180px] text-base sm:text-lg theme-text group-hover:text-primary-400">
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-1.5 shrink-0 pt-0.5">
@@ -237,11 +222,7 @@ const Projects = () => {
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className={`px-2 py-0.5 rounded text-[10px] font-mono font-semibold border ${
-                        featured
-                          ? 'bg-[#077DE6]/15 text-[#077DE6] border-[#077DE6]/30'
-                          : 'bg-primary-500/10 text-primary-400 border-primary-500/20'
-                      }`}
+                      className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold border bg-primary-500/10 text-primary-400 border-primary-500/20"
                     >
                       {tag}
                     </span>
@@ -269,7 +250,7 @@ const Projects = () => {
         <div className="flex flex-col gap-6">
           {featuredProject && renderProjectCard(featuredProject, 0, true)}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             {otherProjects.map((project, index) => renderProjectCard(project, index))}
           </div>
         </div>
