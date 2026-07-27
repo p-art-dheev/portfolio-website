@@ -62,18 +62,21 @@ function App() {
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme === 'light') {
       setDarkMode(false)
-      document.body.classList.add('light')
+      document.documentElement.classList.remove('dark')
+    } else {
+      document.documentElement.classList.add('dark')
     }
   }, [])
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode)
-    if (darkMode) {
-      document.body.classList.add('light')
-      localStorage.setItem('theme', 'light')
-    } else {
-      document.body.classList.remove('light')
+    const newDarkMode = !darkMode
+    setDarkMode(newDarkMode)
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark')
       localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
     }
   }
 

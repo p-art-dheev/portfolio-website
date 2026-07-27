@@ -42,7 +42,7 @@ const Hero = () => {
       <div className="absolute inset-0 rounded-full bg-primary-500/10 blur-md transition-all duration-500" />
 
       {/* Main Image Container */}
-      <div className="absolute inset-0 rounded-full border-[3px] border-primary-500/30 overflow-hidden shadow-[0_0_20px_rgba(var(--color-primary-500),0.3)] bg-[#13131a] z-10 transition-all duration-500">
+      <div className="absolute inset-0 rounded-full border-[3px] border-primary-500/30 overflow-hidden shadow-[0_0_20px_rgba(var(--color-primary-500),0.3)] theme-surface z-10 transition-all duration-500">
         {config.personal.profileImage ? (
           <img
             src={config.personal.profileImage}
@@ -51,8 +51,8 @@ const Hero = () => {
           />
         ) : (
           <>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-            <FaUser className="text-5xl lg:text-6xl text-white/90 absolute inset-0 m-auto flex items-center justify-center z-10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-200 dark:from-white/20 to-transparent" />
+            <FaUser className="text-5xl lg:text-6xl text-slate-400 dark:text-white/90 absolute inset-0 m-auto flex items-center justify-center z-10" />
           </>
         )}
       </div>

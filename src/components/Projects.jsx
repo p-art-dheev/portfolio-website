@@ -56,64 +56,57 @@ const Projects = () => {
           transition={{ duration: 0.4 }}
           className="w-full"
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 hover:border-white/20 bg-gradient-to-r from-[#171124] via-[#1f1633] to-[#141021] p-5 sm:p-6 shadow-md transition-all duration-300 group hover:-translate-y-1">
+          <div className="relative overflow-hidden rounded-3xl border theme-border theme-border-hover theme-surface p-5 sm:p-6 shadow-md transition-all duration-300 group hover:-translate-y-1">
 
             <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
               {/* Left content area */}
               <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-2.5 mb-2.5">
+                {/* Title + Badge */}
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <h3 className="font-display font-extrabold text-xl sm:text-2xl theme-text">
+                    {project.title}
+                  </h3>
+                  
                   {/* Live Pulsing Status Badge */}
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fuchsia-500/15 border border-fuchsia-500/40 text-fuchsia-300 text-[10px] font-mono font-bold uppercase tracking-wider shadow-sm">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fuchsia-500/15 border border-fuchsia-500/40 text-fuchsia-700 dark:text-fuchsia-300 text-[10px] font-mono font-bold uppercase tracking-wider shadow-sm">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fuchsia-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-400" />
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fuchsia-500 dark:bg-fuchsia-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500 dark:bg-fuchsia-400" />
                     </span>
                     Currently Building
                   </span>
-
-                  {/* Icon tag */}
-                  {Icon && (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-fuchsia-300 text-[11px] font-mono">
-                      <Icon className="text-xs text-fuchsia-400" />
-                      <span>AI Research</span>
-                    </span>
-                  )}
                 </div>
 
-                {/* Title + Code link */}
-                <div className="flex flex-wrap items-center gap-3 mb-2">
-                  <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white group-hover:text-fuchsia-300 transition-colors">
-                    {project.title}
-                  </h3>
-                  <a
-                    href={project.githubUrl || 'https://github.com/p-art-dheev'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/25 border border-fuchsia-500/30 hover:border-fuchsia-400 text-fuchsia-300 hover:text-white text-xs font-mono font-semibold transition-all cursor-pointer group/code"
-                  >
-                    <FaGithub className="text-sm group-hover/code:scale-110 transition-transform" />
-                    <span className="group-hover/code:underline">Code</span>
-                  </a>
-                </div>
-
-                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-3xl">
+                <p className="text-xs sm:text-sm theme-text-sub leading-relaxed max-w-3xl mb-4">
                   {project.description}
                 </p>
               </div>
 
-              {/* Right content area: Tech tags */}
-              {project.tags && project.tags.length > 0 && (
-                <div className="flex flex-wrap md:flex-col md:items-end justify-start gap-1.5 shrink-0">
-                  {project.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 rounded-lg bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30 text-xs font-mono font-semibold shadow-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+              {/* Right content area: Tech tags + Code Link */}
+              <div className="flex flex-col md:items-end justify-between gap-4 shrink-0">
+                {project.tags && project.tags.length > 0 && (
+                  <div className="flex flex-wrap md:flex-col md:items-end justify-start gap-1.5">
+                    {project.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 rounded-lg bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30 text-xs font-mono font-semibold shadow-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                
+                <a
+                  href={project.githubUrl || 'https://github.com/p-art-dheev'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center md:justify-start gap-1.5 px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 active:bg-slate-400 dark:active:bg-white/25 border border-fuchsia-500/30 hover:border-fuchsia-500 dark:hover:border-fuchsia-400 text-fuchsia-700 dark:text-fuchsia-300 hover:text-fuchsia-800 dark:hover:text-white text-xs font-mono font-semibold transition-all cursor-pointer group/code mt-auto"
+                >
+                  <FaGithub className="text-sm group-hover/code:scale-110 transition-transform" />
+                  <span className="group-hover/code:underline">Code</span>
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -129,10 +122,7 @@ const Projects = () => {
         className="h-full"
       >
         <div
-          className="flex flex-col md:flex-row md:max-h-[150px] h-full rounded-3xl overflow-hidden isolate transform-gpu transition-all duration-300 group hover:-translate-y-1.5 border border-white/10 hover:border-white/20 shadow-md"
-          style={{
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(19,19,26,0.95) 100%)',
-          }}
+          className="flex flex-col md:flex-row md:max-h-[150px] h-full rounded-3xl overflow-hidden isolate transform-gpu transition-all duration-300 group hover:-translate-y-1.5 border theme-border theme-border-hover shadow-md theme-surface"
         >
           {/* Cover Image Header */}
           {hasImages ? (
@@ -146,7 +136,7 @@ const Projects = () => {
                 loading="lazy"
                 className="w-full h-full object-cover transform-gpu transition-transform duration-500 group-hover/image:scale-105 active:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#13131a] via-transparent to-black/30 opacity-80 group-hover/image:opacity-60 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-black/30 opacity-60 dark:opacity-80 group-hover/image:opacity-40 dark:group-hover/image:opacity-60 transition-opacity" />
 
               {/* Status Pill */}
               {project.status?.label && (
@@ -186,7 +176,7 @@ const Projects = () => {
           <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between gap-2.5 overflow-hidden">
             <div>
               <div className="flex flex-wrap items-start justify-between gap-2 mb-1.5">
-                <h3 className="font-display font-extrabold leading-snug transition-colors flex-1 min-w-[180px] text-base sm:text-lg theme-text group-hover:text-primary-400">
+                <h3 className="font-display font-extrabold leading-snug flex-1 min-w-[180px] text-base sm:text-lg theme-text">
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-1.5 shrink-0 pt-0.5">
@@ -205,7 +195,7 @@ const Projects = () => {
                     href={project.githubUrl || 'https://github.com/p-art-dheev'}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/5 hover:bg-white/15 active:bg-white/20 border border-white/15 hover:border-primary-400/60 text-primary-400 hover:text-primary-300 text-[11px] font-mono font-semibold transition-all cursor-pointer group/code"
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-200 dark:bg-white/5 hover:bg-slate-300 dark:hover:bg-white/15 active:bg-slate-400 dark:active:bg-white/20 border border-slate-300 dark:border-white/15 hover:border-primary-400/60 text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 text-[11px] font-mono font-semibold transition-all cursor-pointer group/code"
                   >
                     <FaGithub className="text-xs group-hover/code:scale-110 transition-transform" />
                     <span className="group-hover/code:underline">Code</span>
