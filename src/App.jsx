@@ -12,6 +12,7 @@ import NotFound from './components/NotFound'
 import ScrollToTop from './components/ScrollToTop'
 import AdminLogin from './components/admin/AdminLogin'
 import AdminDashboard from './components/admin/AdminDashboard'
+import Artworks from './components/Artworks'
 import { useAnalytics } from './hooks/useAnalytics'
 import { Analytics } from '@vercel/analytics/react'
 
@@ -88,6 +89,7 @@ function App() {
       {/* Content */}
       <Routes>
         <Route path="/" element={<Portfolio darkMode={darkMode} toggleTheme={toggleTheme} />} />
+        <Route path="/artworks" element={<Artworks darkMode={darkMode} toggleTheme={toggleTheme} />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="*" element={<NotFound />} />

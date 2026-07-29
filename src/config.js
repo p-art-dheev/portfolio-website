@@ -141,6 +141,45 @@ export const config = {
     },
   ],
 
+  // ---- Artworks ----
+  artworks: [
+    {
+      title: 'Radha Krishna',
+      caption: 'Description for Artwork 1',
+      medium: 'Graphite',
+      date: '2026',
+      image: '/assets/artworks/1/cover.jpeg',
+    },
+    {
+      title: 'Thorffin',
+      caption: 'Description for Artwork 2',
+      medium: 'Water Colours',
+      date: '2024',
+      image: '/assets/artworks/2/cover.jpeg',
+    },
+    {
+      title: 'Krishna',
+      caption: 'Description for Artwork 3',
+      medium: 'Colour Pencils',
+      date: '2024',
+      image: '/assets/artworks/3/cover.jpeg',
+    },
+    {
+      title: 'Golden Pup',
+      caption: 'Description for Artwork 4',
+      medium: 'Digital Art',
+      date: '2024',
+      image: '/assets/artworks/4/cover.jpeg',
+    },
+    {
+      title: 'The Gaze',
+      caption: 'Description for Artwork 5',
+      medium: 'Charcoal',
+      date: '2023',
+      image: '/assets/artworks/5/cover.jpeg',
+    }
+  ],
+
   // ---- Quotes (rotated in the hero section) ----
   quotes: [
     { text: 'Code is poetry written in logic.', author: 'Anonymous' },
